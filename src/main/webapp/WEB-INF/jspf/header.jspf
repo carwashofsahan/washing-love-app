@@ -1,0 +1,579 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Washing Love</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/resources/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.8.55/css/materialdesignicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="/resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/resources/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/resources/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/resources/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css"
+          rel="stylesheet"/>
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/resources/plugins/select2/css/select2.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/resources/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/resources/plugins/daterangepicker/daterangepicker.css">
+    <!-- Fotorama from CDNJS, 19 KB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="/resources/plugins/sweetalert2/sweetalert2.min.css">
+    <%--        <link rel="stylesheet" href="/resources/static/dist/css/newStyles.css">--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resources/dist/css/customer.css">
+    <link rel="stylesheet" href="/resources/dist/css/landing.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/dist/css/dealer.css">
+
+
+    <%--    <style>--%>
+
+    <%--        .dropdown-menu {--%>
+    <%--            height: 180px;--%>
+    <%--            overflow-y: scroll;--%>
+    <%--        }--%>
+
+    <%--        .btn-florplan {--%>
+    <%--            background-color: #656d78;--%>
+    <%--            color: white;--%>
+    <%--            border: none;--%>
+    <%--        }--%>
+
+    <%--        .btn-submit {--%>
+
+    <%--        }--%>
+
+    <%--        .btn-new-lacation {--%>
+    <%--            background-color: #ec87cd;--%>
+    <%--        }--%>
+
+    <%--        .btn-delete {--%>
+    <%--            background-color: #da4453;--%>
+    <%--        }--%>
+
+    <%--        .btn-edit {--%>
+    <%--            /*background-color: #f5e923;*/--%>
+    <%--            width: 48px;--%>
+    <%--            color: #e39f0b;--%>
+    <%--            height: 48px;--%>
+    <%--            padding: 13px 14px;--%>
+    <%--            font-size: 18px;--%>
+    <%--            line-height: 23px;--%>
+    <%--            border-radius: 100%;--%>
+    <%--            border: 1px solid #e39f0b;--%>
+    <%--        }--%>
+
+    <%--        .btn-edit:hover {--%>
+    <%--            color: white;--%>
+    <%--            background-color: #e39f0b;--%>
+    <%--        }--%>
+
+    <%--        .btn-view {--%>
+    <%--            background-color: #4FC1E9;--%>
+    <%--        }--%>
+
+
+    <%--        .btn-add-workorder {--%>
+    <%--            background-color: #48cfad !important;--%>
+    <%--            color: white;--%>
+    <%--            border: none;--%>
+    <%--        }--%>
+
+
+    <%--        .btn-add-action {--%>
+    <%--            background-color: #ed5565 !important;--%>
+    <%--            color: white;--%>
+    <%--            border: none;--%>
+    <%--        }--%>
+
+    <%--        .btn-document {--%>
+    <%--            background-color: #967ADC !important;--%>
+    <%--            color: white;--%>
+    <%--            border: none;--%>
+    <%--        }--%>
+
+    <%--        /*--------------------------------------------------*/--%>
+    <%--        .error {--%>
+    <%--            color: red;--%>
+    <%--        }--%>
+
+    <%--        .imageThumb {--%>
+    <%--            max-height: 75px;--%>
+    <%--            padding: 1px;--%>
+    <%--            cursor: pointer;--%>
+    <%--        }--%>
+
+    <%--        .pip {--%>
+    <%--            display: inline-block;--%>
+    <%--            margin: 10px 10px 0 0;--%>
+    <%--        }--%>
+
+    <%--        .remove {--%>
+    <%--            display: block;--%>
+    <%--            background: #444;--%>
+    <%--            border: 1px solid black;--%>
+    <%--            color: white;--%>
+    <%--            text-align: center;--%>
+    <%--            cursor: pointer;--%>
+    <%--        }--%>
+
+    <%--        .remove:hover {--%>
+    <%--            background: white;--%>
+    <%--            color: black;--%>
+    <%--        }--%>
+    <%--    </style>--%>
+</head>
+<body class="">
+<section class="navigation">
+    <div class="container-fluid">
+        <div class="brand">
+            <a href="#!"> <img width="200px;" style="margin-top: -10px" src="/resources/dist/img/logonew01.png" alt=""></a>
+        </div>
+        <nav>
+            <div class="nav-mobile"><a id="navbar-toggle" href="#!"><span></span></a></div>
+
+            <%--            /////////////////////////////  CUSTOMER TABS NAVBAR ///////////////////////////////////////////--%>
+            <c:if test="${userType eq 'CUSTOMER'}">
+                <ul class="nav-pills" id="customerTabs">
+                    <li class="active toggle">
+
+                        <a style="height: 70px; color: whitesmoke" class="nav-link customer-washcenter"
+                           href="/dashboards/customer">
+                            Wash Center
+                        </a>
+                    </li>
+                    <li>
+                        <a style="height: 70px; color: whitesmoke" class="nav-link customer-bookawash"
+                           href="/dashboards/customer/book">Book a Wash</a>
+                    </li>
+
+
+                    <li>
+                        <a style="height: 70px; color: whitesmoke" class="nav-link customer-myrequest"
+                           href="/dashboards/customer/request">
+                            My Request
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item dropdown notification">
+
+                        <a style="padding: 0rem 1rem;" class="nav-link nav-icons" id="navbarDropdownMenuLink1"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification">
+                            <button type="button" class="icon-button">
+                                <span class="material-icons">notifications</span>
+                                <span class="icon-button__badge notiCount"></span>
+                            </button>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                            <li style="left: 0px" class="notificationList">
+
+
+                            </li>
+                            <li style="left: unset;width: 100%;text-align: center;">
+                                <div class="list-footer"><a style="line-height: 2"
+                                                            href="/dashboards/customer/notification">View all
+                                    notifications</a></div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown nav-user">
+                        <a style="line-height: 60px" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="/resources/dist/img/1.jpg " alt=""
+                                 class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                             aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name userNames"></h5> <span
+                                    class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                            <a class="dropdown-item" href="/dashboards/customer/userprofile"><i
+                                    class="fas fa-user mr-2"></i>My Profile</a>
+                            <a class="dropdown-item" href="/users/common/email"><i
+                                    class="fas fa-envelope mr-2"></i>Email</a>
+                            <a class="dropdown-item" href="/users/logout"><i
+                                    class="fas fa-power-off mr-2"></i>Logout</a>
+
+                        </div>
+                    </li>
+
+
+                </ul>
+
+            </c:if>
+
+
+            <%--            ///////////////////////// DETAILER TABS NAVBAR /////////////////////////////////////////////////--%>
+
+            <c:if test="${userType eq 'DETAILER'}">
+                <ul class="nav-pills" id="detailerTabs">
+                    <li class="active toggle">
+
+                        <a style="height: 70px; color: whitesmoke" class="nav-link detailer-washcenter"
+                           href="/dashboards/detailer">
+                            Wash Centers
+                        </a>
+                    </li>
+                    <li>
+                        <a style="height: 70px; color: whitesmoke" class="nav-link detailer-mypackage"
+                           href="/dashboards/detailer/packages">My Packages</a>
+                    </li>
+
+
+                    <li>
+                        <a style="height: 70px; color: whitesmoke" class="nav-link detailer-booking"
+                           href="/dashboards/detailer/bookings">
+                            Booking Request
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown notification">
+
+                        <a style="padding: 0rem 1rem;" class="nav-link nav-icons" id="navbarDropdownMenuLink1"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification">
+                            <button type="button" class="icon-button">
+                                <span class="material-icons">notifications</span>
+                                <span class="icon-button__badge notiCount"></span>
+                            </button>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                            <li style="left: 0px" class="notificationList">
+
+
+                            </li>
+                            <li style="left: unset;width: 100%;text-align: center;">
+                                <div class="list-footer"><a style="line-height: 2"
+                                                            href="/dashboards/customer/notification">View all
+                                    notifications</a></div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown nav-user">
+                        <a style="line-height: 60px" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="/resources/dist/img/1.jpg " alt=""
+                                 class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                             aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name userNames"></h5> <span
+                                    class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                            <a class="dropdown-item" href="/dashboards/customer/userprofile"><i
+                                    class="fas fa-user mr-2"></i>My Profile</a>
+                            <a class="dropdown-item" href="/users/common/email"><i
+                                    class="fas fa-envelope mr-2"></i>Email</a>
+                            <a class="dropdown-item" href="/users/logout"><i
+                                    class="fas fa-power-off mr-2"></i>Logout</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </c:if>
+
+
+            <%--            /////////////////////////// ADMIN TABS NAVBAR //////////////////////////////////////////////////--%>
+
+            <c:if test="${userType eq 'ADMIN'}">
+                <ul class="nav-pills" id="adminTabs">
+                    <li id="admin_administration">
+
+                        <a style="height: 70px; color: whitesmoke" class="nav-link admin-adminstration"
+                           href="/dashboards/admin">
+                            Administration
+                        </a>
+                    </li>
+                    <li>
+                        <a style="height: 70px;color: whitesmoke" class="nav-link admin-report"
+                           href="/dashboards/admin/reports">Reports</a>
+                    </li>
+
+                    <li class="nav-item dropdown notification">
+
+                        <a style="padding: 0rem 1rem;" class="nav-link nav-icons" id="navbarDropdownMenuLink1"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification">
+                            <button type="button" class="icon-button">
+                                <span class="material-icons">notifications</span>
+                                <span class="icon-button__badge notiCount"></span>
+                            </button>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                            <li style="left: 0px" class="notificationList">
+
+
+                            </li>
+                            <li style="left: unset;width: 100%;text-align: center;">
+                                <div class="list-footer"><a style="line-height: 2"
+                                                            href="/dashboards/customer/notification">View all
+                                    notifications</a></div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown nav-user">
+                        <a style="line-height: 60px" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <img src="/resources/dist/img/1.jpg " alt=""
+                                 class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                             aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name userNames"></h5> <span
+                                    class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                            <a class="dropdown-item" href="/dashboards/customer/userprofile"><i
+                                    class="fas fa-user mr-2"></i>My Profile</a>
+                            <a class="dropdown-item" href="/users/admin/email"><i
+                                    class="fas fa-envelope mr-2"></i>Email</a>
+                            <a class="dropdown-item" href="/users/logout"><i
+                                    class="fas fa-power-off mr-2"></i>Logout</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </c:if>
+
+            <%--            ///////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
+        </nav>
+    </div>
+</section>
+<%--<div class="wrapper">--%>
+
+
+<%--</div>--%>
+
+<%--<style>--%>
+<%--    body {--%>
+<%--        font-family: Rubik, sans-serif !important;--%>
+<%--    }--%>
+
+<%--    .set-header-padding {--%>
+<%--        font-size: 14px !important;--%>
+<%--        padding: 0px !important;--%>
+<%--    }--%>
+
+<%--    .set-header-padding nav ul li {--%>
+<%--        border-radius: 0px !important;--%>
+<%--    }--%>
+
+<%--    .nav-pills .nav-link {--%>
+<%--        border-radius: 0px !important;--%>
+<%--    }--%>
+
+<%--    [class*=sidebar-dark-] .sidebar a {--%>
+<%--        color: gray !important;--%>
+<%--    }--%>
+
+<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item:hover > .nav-link, [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-link:focus {--%>
+<%--        background-color: rgba(0, 0, 0, .2);--%>
+<%--    }--%>
+
+<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item:hover > .nav-link {--%>
+
+<%--    }--%>
+
+<%--    .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {--%>
+<%--        background-color: rgba(0, 0, 0, .5);--%>
+<%--        border-right: 10px solid #8cc152;--%>
+<%--        color: white !important;--%>
+<%--    }--%>
+
+<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item.menu-open > .nav-link {--%>
+<%--        background-color: rgba(0, 0, 0, .5);--%>
+<%--        border-right: 10px solid #8cc152;--%>
+<%--    }--%>
+
+<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-link:active {--%>
+<%--        background-color: rgba(0, 0, 0, .07);--%>
+<%--    }--%>
+
+<%--    [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active {--%>
+<%--        color: white !important;--%>
+<%--        background-color: #20222a;--%>
+<%--        border-right: 10px solid #8cc152;--%>
+<%--    }--%>
+
+<%--    [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link {--%>
+<%--        padding-left: 15px !important;;--%>
+<%--    }--%>
+
+<%--    .navbar-nav > .user-menu > .dropdown-menu > li.user-header {--%>
+<%--        height: 100px !important;--%>
+
+<%--    }--%>
+
+<%--    .bg-green {--%>
+<%--        /*background-image: linear-gradient(#A0D468,#2E8B57)!important;*/--%>
+<%--        background-color: white !important;--%>
+<%--        margin-left: 10px;--%>
+<%--        margin-right: 10px;--%>
+<%--        border-bottom: #E9E9E9 thin solid;--%>
+<%--        color: #0a0e14 !important;--%>
+<%--    }--%>
+
+<%--    .navbar-nav > .user-menu > .dropdown-menu {--%>
+<%--        width: 270px !important;--%>
+<%--    }--%>
+
+<%--    .user-img-new {--%>
+<%--        margin: 5px;--%>
+<%--        border-radius: 100%;--%>
+<%--        height: 60px !important;--%>
+<%--        width: 60px !important;--%>
+<%--        border: none !important;--%>
+<%--        box-shadow: none !important;--%>
+<%--    }--%>
+
+<%--    .btn-primary {--%>
+<%--        background-color: #A0D468;--%>
+<%--        border: #A0D468;--%>
+<%--    }--%>
+
+<%--    .btn-primary:hover {--%>
+<%--        background-color: #8cc152;--%>
+<%--    }--%>
+
+<%--    .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {--%>
+<%--        background-color: #8cc152 !important;--%>
+<%--    }--%>
+
+<%--    .content-wrapper {--%>
+<%--        margin-top: 50px;--%>
+<%--    }--%>
+
+<%--    h5 {--%>
+<%--        font-size: 16px !important;--%>
+<%--        font-weight: 500;--%>
+<%--    }--%>
+
+<%--    label {--%>
+<%--        font-size: 14px;--%>
+<%--        font-weight: normal !important;--%>
+<%--    }--%>
+
+<%--    .card {--%>
+<%--        box-shadow: none !important;--%>
+<%--        border-radius: 0px;--%>
+<%--    }--%>
+<%--</style>--%>
+</body>
+<!-- jQuery -->
+<script src="/resources/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script>
+    var user = '${user}';
+    var token = '${token}';
+    $(function () {
+        $.ajax({
+            url: '/users/' + user,
+            method: 'get',
+            contentType: "application/json",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            success: function (result) {
+                $('.userNames').text(result.data.firstname + ' ' + result.data.lastname);
+
+            },
+            error: function (err) {
+                console.log('err')
+                console.log(err);
+            }
+        });
+
+        $.ajax({
+            url: '/notifications/count/' + user,
+            method: 'get',
+            contentType: "application/json",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            success: function (result) {
+
+                if (result.data == 0) {
+                    $('.notiCount').css('display', 'none');
+                } else {
+                    $('.notiCount').text(result.data);
+                }
+            },
+            error: function (err) {
+                console.log('err')
+                console.log(err);
+            }
+        });
+
+        $.ajax({
+            url: '/notifications/top5/' + user,
+            method: 'get',
+            contentType: "application/json",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
+            success: function (result) {
+                console.log(result);
+                for (var obj of result.data) {
+                    $('.notificationList').append('<a href="#"\n' +
+                        '                                           style="color: #3d405c;background-color: #f7f7fb;border-color: #e1e1e7;"\n' +
+                        '                                           class="list-group-item list-group-item-action">\n' +
+                        '                                            <div class="notification-info">\n' +
+                        '                                                <div class="notification-list-user-img"><img\n' +
+                        '                                                        src="https://img.icons8.com/color/48/000000/administrator-female.png"\n' +
+                        '                                                        alt="" class="user-avatar-md rounded-circle"></div>\n' +
+                        '                                                <div class="notification-list-user-block"><span\n' +
+                        '                                                        class="notification-list-user-name">'+obj.sender.firstname+' '+obj.sender.lastname+'</span>'+obj.notification+'\n' +
+                        '                                                    \n' +
+                        '                                                    address\n' +
+                        '                                                    <div class="notification-date">'+obj.date+'</div>\n' +
+                        '                                                </div>\n' +
+                        '                                            </div>\n' +
+                        '                                        </a>');
+                }
+
+            },
+            error: function (err) {
+                console.log('err')
+                console.log(err);
+            }
+        });
+
+    });
+</script>
+
+
+</html>

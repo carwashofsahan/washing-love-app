@@ -1,0 +1,42 @@
+.btn-edit{
+    font-size: 15px;
+    /*color: yellow;*/
+    border-radius: 100%;
+    background-color: white;
+    right: 40px;
+    border: none;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    padding: 5px;
+    transition: 1s;
+}
+
+.btn-edit:hover{
+    background-color: orange;
+    color: white;
+    transition: 1s;
+}
+
+.btn-delete{
+    font-size: 15px;
+    /*color: yellow;*/
+    border-radius: 100%;
+    background-color: white;
+    right: 0;
+    border: none;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    padding: 5px;
+    transition: 1s;
+}
+
+.btn-delete{
+    background-color: #dc3545;
+    color: white;
+    transition: 1s;
+}
+ 
