@@ -15,7 +15,7 @@
         <section>
         <div>
         <h1 style=" display: flex; justify-content: center;font-size: xxx-large; ">Page Not Found</h1>
-        <img style="margin-top: -10px" src="/resources/dist/img/404_error.jpg" alt="">
+        <img style="margin-top: -10px" src="/resources/dist/img/404_error_new.jpg" alt="">
         </div>
 
         </section>
