@@ -354,7 +354,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Reject <br>
-                            <span class="font-weight-bold">WashCenter ID <span id="rejectWashCenterId"></span></span>
+                            <span class="font-weight-bold"><span id="rejectWashCenterName"></span></span>
                         </h4>
 
                         <div class="col-12 text-center">
@@ -381,7 +381,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Approve <br>
-                            <span class="font-weight-bold">WashCenter ID <span id="approveWashCenterId"></span></span>
+                            <span class="font-weight-bold"><span id="approveWashCenterName"></span></span>
                         </h4>
 
                         <div class="col-12 text-center">
@@ -408,7 +408,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Delete <br>
-                            <span class="font-weight-bold">WashCenter ID <span id="deleteWashCenterId"></span></span>
+                            <span class="font-weight-bold"><span id="deleteWashCenterName"></span></span>
                         </h4>
 
                         <div class="col-12 text-center">
@@ -740,10 +740,10 @@
                         '                                                        <h6 class="card-text">Phone : <span>' + obj.phone + '</span></h6>\n' +
                         '                                                        <h6 class="card-text">Packages : <span>' + packageSet + '</span></h6>\n' +
                         '                                                        <div class="col-12 text-center">\n' +
-                        '                                                            <button onclick="ApprovWashCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#approveWashCenter"\n' +
+                        '                                                            <button onclick="ApprovWashCenter(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#approveWashCenter"\n' +
                         '                                                                    class="btn btn-success">Approve\n' +
                         '                                                            </button>\n' +
-                        '                                                            <button onclick="RejectWashCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#rejectWashCenter"\n' +
+                        '                                                            <button onclick="RejectWashCenter(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#rejectWashCenter"\n' +
                         '                                                                    class="btn btn-danger">Reject\n' +
                         '                                                            </button>\n' +
                         '                                                        </div>\n' +
@@ -792,7 +792,7 @@
                             '                                                            class="card-text">See\n' +
                             '                                                            more </div>\n' +
                             '\n' +
-                            '                                                        <button onclick="DeleteWashCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#deleteWashCenter"\n' +
+                            '                                                        <button onclick="DeleteWashCenter(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#deleteWashCenter"\n' +
                             '                                                                class="float-right btn btn-danger">Delete\n' +
                             '                                                        </button>\n' +
                             '                                                    </div>\n' +
@@ -1302,7 +1302,10 @@
     //--------------------------------------------Wash Center---------------------------------------------------
     function ApprovWashCenter(event) {
         var userId = event.path[0].getAttribute('data-userid')
+        var centerName = event.path[0].getAttribute('data-name')
+        console.log('wash center details: ',event.path[0]);
         $('#approveWashCenterId').text(userId);
+        $('#approveWashCenterName').text(centerName);
         $('#confirmApproveWashCenterBtn').attr('data-userid', userId);
     }
 
@@ -1326,8 +1329,10 @@
     }
 
     function RejectWashCenter(event) {
-        var userId = event.path[0].getAttribute('data-userid')
+        var userId = event.path[0].getAttribute('data-userid');
+        var centerName = event.path[0].getAttribute('data-name');
         $('#rejectWashCenterId').text(userId);
+        $('#rejectWashCenterName').text(centerName);
         $('#confirmRejectWashCenterBtn').attr('data-userid', userId);
     }
 
@@ -1353,7 +1358,9 @@
 
     function DeleteWashCenter(event) {
         var userId = event.path[0].getAttribute('data-userid')
+        var centerName = event.path[0].getAttribute('data-name')
         $('#deleteWashCenterId').text(userId);
+        $('#deleteWashCenterName').text(centerName);
         $('#confirmDeleteWashCenterBtn').attr('data-userid', userId);
     }
 
