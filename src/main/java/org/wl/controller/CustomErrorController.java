@@ -17,7 +17,7 @@ public class CustomErrorController implements ErrorController {
 //        modelAndView.setViewName("error");
 
         if (response.getStatus() == HttpStatus.NOT_FOUND.value()) {
-            modelAndView.setViewName("errors/500");
+            modelAndView.setViewName("errors/404");
         }
         else if (response.getStatus() == HttpStatus.FORBIDDEN.value()) {
             modelAndView.setViewName("errors/403");
