@@ -246,6 +246,7 @@ public class UserController {
                     modelAndView.setViewName("redirect:/dashboards/customer");
                     session.setAttribute("token", jwt);
                     session.setAttribute("user", userDto.getId());
+                    session.setAttribute("name", userDto.getFirstname());
                     session.setAttribute("userType", userDto.getRole().getName());
                     session.setAttribute("Authorization", "Bearer " + jwt);
                     return modelAndView;
@@ -253,6 +254,7 @@ public class UserController {
                     modelAndView.setViewName("redirect:/dashboards/detailer");
                     session.setAttribute("token", jwt);
                     session.setAttribute("user", userDto.getId());
+                    session.setAttribute("name", userDto.getFirstname());
                     session.setAttribute("userType", userDto.getRole().getName());
                     session.setAttribute("Authorization", "Bearer " + jwt);
                     return modelAndView;
@@ -260,6 +262,7 @@ public class UserController {
                     modelAndView.setViewName("redirect:/dashboards/admin");
                     session.setAttribute("token", jwt);
                     session.setAttribute("user", userDto.getId());
+                    session.setAttribute("name", userDto.getFirstname());
                     session.setAttribute("userType", userDto.getRole().getName());
                     session.setAttribute("Authorization", "Bearer " + jwt);
                     return modelAndView;
