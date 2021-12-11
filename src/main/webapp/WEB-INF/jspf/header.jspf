@@ -162,19 +162,19 @@
                     <li class="active toggle">
 
                         <a style="height: 70px; color: whitesmoke" class="nav-link customer-washcenter"
-                           href="/dashboards/customer">
+                           href="/dashboards/customer?user=${user}&token=${token}&userType=${userType}">
                             Wash Center
                         </a>
                     </li>
                     <li>
                         <a style="height: 70px; color: whitesmoke" class="nav-link customer-bookawash"
-                           href="/dashboards/customer/book">Book a Wash</a>
+                           href="/dashboards/customer/book?user=${user}&token=${token}&userType=${userType}">Book a Wash</a>
                     </li>
 
 
                     <li>
                         <a style="height: 70px; color: whitesmoke" class="nav-link customer-myrequest"
-                           href="/dashboards/customer/request">
+                           href="/dashboards/customer/request?user=${user}&token=${token}&userType=${userType}">
                             My Request
                         </a>
                     </li>
@@ -184,7 +184,7 @@
 
                         <a style="padding: 0rem 1rem;" class="nav-link nav-icons" id="navbarDropdownMenuLink1"
                            data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification">
+                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification?user=${user}&token=${token}&userType=${userType}">
                             <button type="button" class="icon-button">
                                 <span class="material-icons">notifications</span>
                                 <span class="icon-button__badge notiCount"></span>
@@ -197,7 +197,7 @@
                             </li>
                             <li style="left: unset;width: 100%;text-align: center;">
                                 <div class="list-footer"><a style="line-height: 2"
-                                                            href="/dashboards/customer/notification">View all
+                                                            href="/dashboards/customer/notification?user=${user}&token=${token}&userType=${userType}">View all
                                     notifications</a></div>
                             </li>
                         </ul>
@@ -215,9 +215,9 @@
                                 <h5 class="mb-0 text-white nav-user-name userNames"></h5> <span
                                     class="status"></span><span class="ml-2">Available</span>
                             </div>
-                            <a class="dropdown-item" href="/dashboards/customer/userprofile"><i
+                            <a class="dropdown-item" href="/dashboards/customer/userprofile?user=${user}&token=${token}&userType=${userType}"><i
                                     class="fas fa-user mr-2"></i>My Profile</a>
-                            <a class="dropdown-item" href="/users/common/email"><i
+                            <a class="dropdown-item" href="/users/common/email?user=${user}&token=${token}&userType=${userType}"><i
                                     class="fas fa-envelope mr-2"></i>Email</a>
                             <a class="dropdown-item" href="/users/logout"><i
                                     class="fas fa-power-off mr-2"></i>Logout</a>
@@ -238,19 +238,19 @@
                     <li class="active toggle">
 
                         <a style="height: 70px; color: whitesmoke" class="nav-link detailer-washcenter"
-                           href="/dashboards/detailer">
+                           href="/dashboards/detailer?user=${user}&token=${token}&userType=${userType}">
                             Wash Centers
                         </a>
                     </li>
                     <li>
                         <a style="height: 70px; color: whitesmoke" class="nav-link detailer-mypackage"
-                           href="/dashboards/detailer/packages">My Packages</a>
+                           href="/dashboards/detailer/packages?user=${user}&token=${token}&userType=${userType}">My Packages</a>
                     </li>
 
 
                     <li>
                         <a style="height: 70px; color: whitesmoke" class="nav-link detailer-booking"
-                           href="/dashboards/detailer/bookings">
+                           href="/dashboards/detailer/bookings?user=${user}&token=${token}&userType=${userType}">
                             Booking Request
                         </a>
                     </li>
@@ -259,7 +259,7 @@
 
                         <a style="padding: 0rem 1rem;" class="nav-link nav-icons" id="navbarDropdownMenuLink1"
                            data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification">
+                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification?user=${user}&token=${token}&userType=${userType}">
                             <button type="button" class="icon-button">
                                 <span class="material-icons">notifications</span>
                                 <span class="icon-button__badge notiCount"></span>
@@ -272,7 +272,7 @@
                             </li>
                             <li style="left: unset;width: 100%;text-align: center;">
                                 <div class="list-footer"><a style="line-height: 2"
-                                                            href="/dashboards/customer/notification">View all
+                                                            href="/dashboards/customer/notification?user=${user}&token=${token}&userType=${userType}">View all
                                     notifications</a></div>
                             </li>
                         </ul>
@@ -290,11 +290,11 @@
                                 <h5 class="mb-0 text-white nav-user-name userNames"></h5> <span
                                     class="status"></span><span class="ml-2">Available</span>
                             </div>
-                            <a class="dropdown-item" href="/dashboards/customer/userprofile"><i
+                            <a class="dropdown-item" href="/dashboards/customer/userprofile?user=${user}&token=${token}&userType=${userType}"><i
                                     class="fas fa-user mr-2"></i>My Profile</a>
-                            <a class="dropdown-item" href="/users/common/email"><i
+                            <a class="dropdown-item" href="/users/common/email?user=${user}&token=${token}&userType=${userType}"><i
                                     class="fas fa-envelope mr-2"></i>Email</a>
-                            <a class="dropdown-item" href="/users/logout"><i
+                            <a class="dropdown-item" href="/users/logout?user=${user}&token=${token}&userType=${userType}"><i
                                     class="fas fa-power-off mr-2"></i>Logout</a>
                         </div>
                     </li>
@@ -310,20 +310,20 @@
                     <li id="admin_administration">
 
                         <a style="height: 70px; color: whitesmoke" class="nav-link admin-adminstration"
-                           href="/dashboards/admin">
+                           href="/dashboards/admin?user=${user}&token=${token}&userType=${userType}">
                             Administration
                         </a>
                     </li>
                     <li>
                         <a style="height: 70px;color: whitesmoke" class="nav-link admin-report"
-                           href="/dashboards/admin/reports">Reports</a>
+                           href="/dashboards/admin/reports?user=${user}&token=${token}&userType=${userType}">Reports</a>
                     </li>
 
                     <li class="nav-item dropdown notification">
 
                         <a style="padding: 0rem 1rem;" class="nav-link nav-icons" id="navbarDropdownMenuLink1"
                            data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification">
+                           aria-haspopup="true" aria-expanded="false" href="/dashboards/customer/notification?user=${user}&token=${token}&userType=${userType}">
                             <button type="button" class="icon-button">
                                 <span class="material-icons">notifications</span>
                                 <span class="icon-button__badge notiCount"></span>
@@ -336,7 +336,7 @@
                             </li>
                             <li style="left: unset;width: 100%;text-align: center;">
                                 <div class="list-footer"><a style="line-height: 2"
-                                                            href="/dashboards/customer/notification">View all
+                                                            href="/dashboards/customer/notification?user=${user}&token=${token}">View all
                                     notifications</a></div>
                             </li>
                         </ul>
@@ -354,11 +354,11 @@
                                 <h5 class="mb-0 text-white nav-user-name userNames"></h5> <span
                                     class="status"></span><span class="ml-2">Available</span>
                             </div>
-                            <a class="dropdown-item" href="/dashboards/customer/userprofile"><i
+                            <a class="dropdown-item" href="/dashboards/customer/userprofile?user=${user}&token=${token}&token=${userType}"><i
                                     class="fas fa-user mr-2"></i>My Profile</a>
-                            <a class="dropdown-item" href="/users/admin/email"><i
+                            <a class="dropdown-item" href="/users/admin/email?user=${user}&token=${token}&token=${userType}"><i
                                     class="fas fa-envelope mr-2"></i>Email</a>
-                            <a class="dropdown-item" href="/users/logout"><i
+                            <a class="dropdown-item" href="/users/logout?user=${user}&token=${token}&token=${userType}"><i
                                     class="fas fa-power-off mr-2"></i>Logout</a>
                         </div>
                     </li>

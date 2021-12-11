@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("SpringMVCViewInspection")
@@ -21,16 +22,8 @@ public class DashboardController {
      * @return Model and View.
      */
     @GetMapping("/admin")
-    public ModelAndView viewAdmin() {
-        ModelAndView modelAndView=new ModelAndView("dashboard/admin/admin_dashboard");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewAdmin(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/admin/admin_dashboard");
     }
 
     /**
@@ -39,16 +32,8 @@ public class DashboardController {
      * @return Model and View.
      */
     @GetMapping("/customer/book")
-    public ModelAndView viewCustomerBookWash() {
-        ModelAndView modelAndView= new ModelAndView("dashboard/customer/book_a_wash");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-         modelAndView.addObject("token",token);
-         modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewCustomerBookWash(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/customer/book_a_wash");
     }
 
     /**
@@ -57,16 +42,8 @@ public class DashboardController {
      * @return Model and View.
      */
     @GetMapping("/customer/request")
-    public ModelAndView viewCustomerMyRequest() {
-        ModelAndView modelAndView=new ModelAndView("dashboard/customer/my_request");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewCustomerMyRequest(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/customer/my_request");
     }
 
     /**
@@ -74,16 +51,8 @@ public class DashboardController {
      * @return Model and View.
      */
     @GetMapping("/customer")
-    public ModelAndView viewCustomer() {
-        ModelAndView modelAndView= new ModelAndView("dashboard/customer/customer_dashboard");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewCustomer(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/customer/customer_dashboard");
     }
 
     @GetMapping("/forgetPassword")
@@ -99,16 +68,8 @@ public class DashboardController {
      */
 
     @GetMapping("/detailer")
-    public ModelAndView viewDetailer() {
-        ModelAndView modelAndView=new ModelAndView("dashboard/detailer/detailer_dashboard");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewDetailer(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/detailer/detailer_dashboard");
     }
 
     /**
@@ -118,64 +79,32 @@ public class DashboardController {
      */
 
     @GetMapping("/customer/notification")
-    public ModelAndView authview() {
-        ModelAndView modelAndView=new ModelAndView("dashboard/customer/notification");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView authview(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/customer/notification");
     }
 
     /**
      * @return customer's user profile view.
      */
     @GetMapping("/customer/userprofile")
-    public ModelAndView viewUserProfile() {
-        ModelAndView modelAndView=new ModelAndView("dashboard/customer/profile");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewUserProfile(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/customer/profile");
     }
 
     /**
      * @return detailer's packages view.
      */
     @GetMapping("/detailer/packages")
-    public ModelAndView viewDetailerPackages() {
-        ModelAndView modelAndView=new ModelAndView("dashboard/detailer/packages");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewDetailerPackages(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/detailer/packages");
     }
 
     /**
      * @return detailers's bookings view.
      */
     @GetMapping("/detailer/bookings")
-    public ModelAndView viewDetailerBookings() {
-        ModelAndView modelAndView= new ModelAndView("dashboard/detailer/bookings");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView viewDetailerBookings(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/detailer/bookings");
     }
 
 
@@ -183,15 +112,43 @@ public class DashboardController {
      * @return admin's report view.
      */
     @GetMapping("/admin/reports")
-    public ModelAndView viewAdminReports() {
-        ModelAndView modelAndView=new ModelAndView("dashboard/admin/reports");
+    public ModelAndView viewAdminReports(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/admin/reports");
+    }
+
+    /**
+     * Do not look into the httpsession params, instead handle user data through request params.
+     * if it's not available then check for HTTP session and update the attributes if necessary
+     *
+     * @param request
+     * @param redirectPath
+     * @return
+     */
+    private ModelAndView handleModelAndViewWithUserData(HttpServletRequest request, String redirectPath) {
+        ModelAndView modelAndView = new ModelAndView(redirectPath);
+        String userParam = request.getParameter("user");
+        String tokenParam = request.getParameter("token");
+        String userTypeParam = request.getParameter("userType");
+        // check httpsession attributes
         Object token = httpSession.getAttribute("token");
         Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
+        Object userType = httpSession.getAttribute("userType");
+
+        if (userParam != null && tokenParam != null) {
+            // set values using request params
+            modelAndView.addObject("token", tokenParam);
+            modelAndView.addObject("user", userParam);
+            modelAndView.addObject("userType", userTypeParam);
+            System.out.println("user: " + userParam + ", token: " + tokenParam+ ", userType: " + userTypeParam);
+        } else if(token != null && user != null ) {
+            // set values using attributes in Httpsession
+            modelAndView.addObject("token",token);
+            modelAndView.addObject("user",user);
+            modelAndView.addObject("userType",userType);
+            System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType);
+        } else {
             return new ModelAndView("auth/login");
         }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
         return modelAndView;
     }
 
