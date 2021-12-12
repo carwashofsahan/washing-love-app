@@ -182,7 +182,7 @@
         </div>
         <%--                        ---------------------------------------------------------------------%>
 
-        <%--                        -------------------------------%>
+        <%--           see-more modal             -------------------------------%>
         <div class="modal fade" id="seemore" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document" id="othermodels">
@@ -1538,14 +1538,14 @@
     }
 
     function seemore(event) {
-        var cid = event.path[1].getAttribute('data-id')
-        var centerid = event.path[1].getAttribute('data-cid')
-        var city = event.path[1].getAttribute('data-city')
-        var name = event.path[1].getAttribute('data-name')
-        var trate = event.path[1].getAttribute('data-trate')
+        var cid = event.path[0].getAttribute('data-id')
+        var centerid = event.path[0].getAttribute('data-cid')
+        var city = event.path[0].getAttribute('data-city')
+        var name = event.path[0].getAttribute('data-name')
+        var trate = event.path[0].getAttribute('data-trate')
 
-        var phone = event.path[1].getAttribute('data-phone')
-        var state = event.path[1].getAttribute('data-state')
+        var phone = event.path[0].getAttribute('data-phone')
+        var state = event.path[0].getAttribute('data-state')
 
         var rateHtml = '';
         if (trate == 0) {
