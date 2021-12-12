@@ -212,7 +212,8 @@ public class BookingController {
                 entity.add(dto.getCustomer().getFirstname()+" "+dto.getCustomer().getLastname());
                 entity.add(dto.getVehicleNo());
                 entity.add(dto.getPackages().getType().getType()+" - "+dto.getPackages().getPrice());
-                entity.add("<a type=\"button\"  onclick=\"viewNote('" + dto.getSpecialNote() + "')\"   style=\"font-size: 24px;\" ><i class=\"far fa-sticky-note\"></i></a>");
+                entity.add(dto.getSpecialNote());
+//                entity.add("<a type=\"button\"  onclick=\"viewNote('" + dto.getSpecialNote() + "')\"   style=\"font-size: 24px;\" ><i class=\"far fa-sticky-note\"></i></a>");
                 entity.add(formatter.format(dto.getDate()));
                 entity.add(dto.getFromtime());
                 entity.add(dto.getStatus().name());
