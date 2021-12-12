@@ -508,7 +508,6 @@
                         '                                            <div>\n' +
                         '                                                <div class="card" style="width: 18rem; ">\n' +
                         '                                                    <div class="card-body" data-toggle="modal">\n' +
-                        '                                                        <h5 class="card-text">user ID: ' + obj.id + '</h5>\n' +
                         '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                         '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                         '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -545,7 +544,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text">user ID: ' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -567,7 +565,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text">user ID: ' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -588,7 +585,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text">user ID: ' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -609,7 +605,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text"> user ID : ' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -1449,7 +1444,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text">user ID' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -1471,7 +1465,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text">user ID: ' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -1492,7 +1485,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text">user ID: ' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
@@ -1513,7 +1505,6 @@
                                 '                                            <div>\n' +
                                 '                                                <div class="card" style="width: 18rem; ">\n' +
                                 '                                                    <div class="card-body" data-toggle="modal">\n' +
-                                '                                                        <h5 class="card-text font-weight-bold">user ID: ' + obj.id + '</h5>\n' +
                                 '                                                        <h5 class="card-text font-weight-bold">' + obj.firstname + ' ' + obj.lastname + '</h5>\n' +
                                 '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                                 '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
