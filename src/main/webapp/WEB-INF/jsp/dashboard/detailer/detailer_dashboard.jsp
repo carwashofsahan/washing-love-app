@@ -146,7 +146,7 @@
                     <div style="background-color: rgba(0, 51, 69,0.8);color: white"
                          class="modal-header">
                         <h4 class="text-center">Edit Wash Center<br>
-                            <span class="font-weight-bold">WashCenter ID <span id="editWashCenterId"></span></span></h4>
+                            <span class="font-weight-bold">WashCenter Name: <span id="editWashCenterName"></span></span></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span style="color: white" aria-hidden="true">&times;</span>
                         </button>
@@ -228,7 +228,7 @@
                     <div class="modal-body">
 
                         <h4 class="text-center">Do you want to delete <br>
-                            <span class="font-weight-bold">WashCenter ID <span id="deleteWashCenterId"></span></span>
+                            <span class="font-weight-bold"><span id="deleteWashCenterName"></span></span>
                         </h4>
 
                         <div class="col-12 text-center">
@@ -354,9 +354,9 @@
                         $('#myWashCenters').append('<div class="col-md-4 col-sm-12  ">\n' +
                             '                    <div>\n' +
                             '                        <div class="card" style="width: 18rem; ">\n' +
-                            '                            <button onclick="editCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#edit_washcenter" type="button" class="btn-edit"><i\n' +
+                            '                            <button onclick="editCenter(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#edit_washcenter" type="button" class="btn-edit"><i\n' +
                             '                                    class="far fa-edit"></i></button>\n' +
-                            '                            <button onclick="deleteCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete_washcenter" type="button"\n' +
+                            '                            <button onclick="deleteCenter(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete_washcenter" type="button"\n' +
                             '                                    class="btn-delete"><i class="far fa-trash-alt"></i></button>\n' +
                             '\n' +
                             '                            <img src="/resources/dist/img/car.jpg" alt="...">\n' +
@@ -387,7 +387,7 @@
                             '                        <div class="card" style="width: 18rem; ">\n' +
                             '                            <button onclick="editCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#edit_washcenter" type="button" class="btn-edit"><i\n' +
                             '                                    class="far fa-edit"></i></button>\n' +
-                            '                            <button onclick="deleteCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete_washcenter" type="button"\n' +
+                            '                            <button onclick="deleteCenter(event)" data-name="' + obj.name + '"data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete_washcenter" type="button"\n' +
                             '                                    class="btn-delete"><i class="far fa-trash-alt"></i></button>\n' +
                             '\n' +
                             '                            <img src="/resources/dist/img/car.jpg" alt="...">\n' +
@@ -675,9 +675,11 @@
 
 
     function deleteCenter(event) {
-        var userId = event.path[1].getAttribute('data-userid')
+        var userId = event.path[1].getAttribute('data-userid');
+        var name = event.path[1].getAttribute('data-name');
         console.log(userId)
-        $('#deleteWashCenterId').text(userId);
+<%--        $('#deleteWashCenterId').text(userId);--%>
+        $('#deleteWashCenterName').text(name);
         $('#confirmDeleteWashCenter').attr('data-userid', userId);
     }
 
@@ -701,8 +703,10 @@
     }
 
     function editCenter(event) {
-        var userId = event.path[1].getAttribute('data-userid')
+        var userId = event.path[1].getAttribute('data-userid');
+        var name = event.path[1].getAttribute('data-name');
         $('#editWashCenterId').text(userId);
+        $('#editWashCenterName').text(name);
         $('#confirmEditWashCenter').attr('data-userid', userId);
 
 

@@ -275,7 +275,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Reject <br>
-                            <span class="font-weight-bold">Package ID <span id="rejectPackageId"></span></span></h4>
+                            <span class="font-weight-bold">Package ID <span id="rejectPackageName"></span></span></h4>
 
                         <div class="col-12 text-center">
                             <button id="confirmRejectPackageBtn" onclick="ConfirmRejectPackage(event)"
@@ -327,7 +327,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Delete <br>
-                            <span class="font-weight-bold">Package ID <span id="deletePackageId"></span></span></h4>
+                            <span class="font-weight-bold">Package: <span id="deletePackageName"></span></span></h4>
 
                         <div class="col-12 text-center">
                             <button id="confirmDeletePackageBtn" onclick="ConfirmDeletePackage(event)"
@@ -650,10 +650,10 @@
                         '                                                        <h6 class="card-text">Rs. ' + obj.price + '</h6>\n' +
                         '                                                        <h6 data-description="' + obj.description + '" style="color: #00A7AA;cursor: pointer" onclick="viewNote(event)" class="card-text">See more</h6>\n' +
                         '                                                        <div class="col-12 text-center">\n' +
-                        '                                                            <button onclick="ApprovPackage(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#approvePackage"\n' +
+                        '                                                            <button onclick="ApprovPackage(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#approvePackage"\n' +
                         '                                                                    class="btn btn-success">Approve\n' +
                         '                                                            </button>\n' +
-                        '                                                            <button onclick="RejectPackage(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#rejectPackage"\n' +
+                        '                                                            <button onclick="RejectPackage(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#rejectPackage"\n' +
                         '                                                                    class="btn btn-danger">Reject\n' +
                         '                                                            </button>\n' +
                         '                                                        </div>\n' +
@@ -692,7 +692,7 @@
                             '                                                        <h6 class="card-text">' + obj.state + '</h6>\n' +
                             '                                                        <h6 data-description="' + obj.description + '" style="color: #00A7AA;cursor: pointer" onclick="viewNote(event)" class="card-text">See more</h6>\n' +
                             '                                                        <div class="col-12 text-center">\n' +
-                            '                                                            <button onclick="DeletePackage(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#deletePackage"\n' +
+                            '                                                            <button onclick="DeletePackage(event)" data-name="' + obj.description + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#deletePackage"\n' +
                             '                                                                    class="btn btn-danger">Delete\n' +
                             '                                                            </button>\n' +
                             '                                                        </div>\n' +
@@ -1034,7 +1034,7 @@
                             '                                                        <h6 class="card-text">' + obj.state + '</h6>\n' +
                             '                                                        <h6 data-description="' + obj.description + '" style="color: #00A7AA;cursor: pointer" onclick="viewNote(event)" class="card-text">See more</h6>\n' +
                             '                                                        <div class="col-12 text-center">\n' +
-                            '                                                            <button onclick="DeletePackage(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#deletePackage"\n' +
+                            '                                                            <button onclick="DeletePackage(event)" data-name="' + obj.description + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#deletePackage"\n' +
                             '                                                                    class="btn btn-danger">Delete\n' +
                             '                                                            </button>\n' +
                             '                                                        </div>\n' +
@@ -1244,8 +1244,10 @@
     }
 
     function RejectPackage(event) {
-        var userId = event.path[0].getAttribute('data-userid')
-        $('#rejectPackageId').text(userId);
+        var userId = event.path[0].getAttribute('data-userid');
+        var name = event.path[0].getAttribute('data-name');
+<%--        $('#rejectPackageId').text(userId);--%>
+        $('#rejectPackageName').text(name);
         $('#confirmRejectPackageBtn').attr('data-userid', userId);
     }
 
@@ -1270,8 +1272,10 @@
     }
 
     function DeletePackage(event) {
-        var userId = event.path[0].getAttribute('data-userid')
+        var userId = event.path[0].getAttribute('data-userid');
+        var name = event.path[0].getAttribute('data-name');
         $('#deletePackageId').text(userId);
+        $('#deletePackageName').text(name);
         $('#confirmDeletePackageBtn').attr('data-userid', userId);
     }
 
