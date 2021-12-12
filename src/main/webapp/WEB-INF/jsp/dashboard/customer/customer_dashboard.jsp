@@ -37,14 +37,14 @@
                         <div class="input-group-btn mr-2">
 
                             <div class="form-group">
-                                <input class="form-control" type="time" required id="searchbyfromtime">
+                                <input class="form-control" type="time"  placeholder="From" required id="searchbyfromtime">
                             </div>
 
                         </div>
 
                         <div class="input-group-btn">
                             <div class="form-group">
-                                <input class="form-control" type="time" placeholder="Fr" required id="searchbytotime">
+                                <input class="form-control" type="time" placeholder="To" required id="searchbytotime">
                             </div>
                         </div>
                         <div class="input-group-btn">
@@ -919,3 +919,20 @@
     }
 
 </script>
+
+<style type="text/css">
+    #searchbyfromtime:before {
+    content:'From:';
+    color: #89939b;
+    font-weight: bolder;
+    font-size: 19px;
+    font-family: sans-serif;
+    }
+    #searchbytotime:before {
+    content:'To:';
+    color: #89939b;
+    font-weight: bolder;
+    font-size: 19px;
+    font-family: sans-serif;
+    }
+</style>
