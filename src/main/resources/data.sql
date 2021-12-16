@@ -9,4 +9,4 @@ INSERT INTO `VEHICLE_TYPE` (`ID`, `TYPE`) VALUES (UUID(), 'HATCHBACK');
 INSERT INTO `VEHICLE_TYPE` (`ID`, `TYPE`) VALUES (UUID(), 'LONG_VEHICLE');
 
 INSERT INTO `USER` (`ID`,`ADDRESS`,`CITY`,`EMAIL`,`FIRSTNAME`,`LASTNAME`,`PASSWORD`,`PHONE`,`STATE`,`ROLE_ID`)
-VALUES (UUID(), 'Panadura','Horana','sahanscarwash@gmail.com','admin','','b4WE4bXVBj0=','07712344321',1,'d925e542-acf5-46b0-af2a-8ce7ef300e15');
+VALUES (UUID(), 'Panadura','Horana','adminofwashinglove@gmail.com','admin','','b4WE4bXVBj0=','07712344321',1,'d925e542-acf5-46b0-af2a-8ce7ef300e15');
