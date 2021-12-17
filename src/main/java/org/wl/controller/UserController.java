@@ -113,16 +113,8 @@ public class UserController {
      * @return Model and View.
      */
     @GetMapping("/admin/email")
-    public ModelAndView adminEmail() {
-        final ModelAndView modelAndView = new ModelAndView("dashboard/admin/email");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView adminEmail(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/admin/email");
     }
 
     /**
@@ -130,16 +122,8 @@ public class UserController {
      * @return model and view.
      */
     @GetMapping("/common/email")
-    public ModelAndView commonEmail() {
-        final ModelAndView modelAndView = new ModelAndView("dashboard/common/email");
-        Object token = httpSession.getAttribute("token");
-        Object user = httpSession.getAttribute("user");
-        if(token==null || user==null){
-            return new ModelAndView("auth/login");
-        }
-        modelAndView.addObject("token",token);
-        modelAndView.addObject("user",user);
-        return modelAndView;
+    public ModelAndView commonEmail(HttpServletRequest request) {
+        return this.handleModelAndViewWithUserData(request,"dashboard/common/email");
     }
 
 
@@ -590,6 +574,42 @@ public class UserController {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    /**
+     * Do not look into the httpsession params, instead handle user data through request params.
+     * if it's not available then check for HTTP session and update the attributes if necessary
+     *
+     * @param request
+     * @param redirectPath
+     * @return
+     */
+    private ModelAndView handleModelAndViewWithUserData(HttpServletRequest request, String redirectPath) {
+        ModelAndView modelAndView = new ModelAndView(redirectPath);
+        String userParam = request.getParameter("user");
+        String tokenParam = request.getParameter("token");
+        String userTypeParam = request.getParameter("userType");
+        // check httpsession attributes
+        Object token = httpSession.getAttribute("token");
+        Object user = httpSession.getAttribute("user");
+        Object userType = httpSession.getAttribute("userType");
+
+        if (userParam != null && tokenParam != null) {
+            // set values using request params
+            modelAndView.addObject("token", tokenParam);
+            modelAndView.addObject("user", userParam);
+            modelAndView.addObject("userType", userTypeParam);
+            System.out.println("user: " + userParam + ", token: " + tokenParam+ ", userType: " + userTypeParam);
+        } else if(token != null && user != null ) {
+            // set values using attributes in Httpsession
+            modelAndView.addObject("token",token);
+            modelAndView.addObject("user",user);
+            modelAndView.addObject("userType",userType);
+            System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType);
+        } else {
+            return new ModelAndView("auth/login");
+        }
+        return modelAndView;
     }
 
 }
