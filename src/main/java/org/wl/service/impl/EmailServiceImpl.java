@@ -16,6 +16,7 @@ import org.wl.repo.EmailRepo;
 import org.wl.repo.UserRepo;
 import org.wl.service.EmailService;
 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -81,6 +82,7 @@ public class EmailServiceImpl implements EmailService {
 
         Resource resource = resourceLoader.getResource("file:src/main/resources/static/dist/img/wllogo.png");
         MimeMessage message = emailSender.createMimeMessage();
+        message.setFrom(new InternetAddress(senderEmail, "Washing Love"));
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(to);
