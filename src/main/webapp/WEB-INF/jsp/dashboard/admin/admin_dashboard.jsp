@@ -1639,86 +1639,16 @@
             '                                    </div>\n' +
             '                                    <div class="card-body">\n' +
             '                                        <div class="tab-content" id="custom-tabs-two-tabContent">\n' +
-            '                                            <div class="tab-pane fade" id="custom-tabs-two-homee"\n' +
+            '                                            <div class="tab-pane fade active show"\n' +
             '                                                 role="tabpanel"\n' +
             '                                                 aria-labelledby="custom-tabs-two-home-tab">\n' +
-
+            '                                                <div class="row" id="custom-tabs-two-homee">\n' +
+            '                                                </div>\n' +
             '                                            </div>\n' +
             '                                            <div class="tab-pane fade active show"\n' +
             '                                                 id="custom-tabs-two-profile" role="tabpanel"\n' +
             '                                                 aria-labelledby="custom-tabs-two-profile-tab">\n' +
             '                                                <div class="row" id="ratings">\n' +
-            '                                                    <div style="margin-bottom: 20px" class="col-md-2">\n' +
-            '                                                        <img style="width: 50px" src="/resources/dist/img/1.jpg"\n' +
-            '                                                             alt="">\n' +
-            '                                                    </div>\n' +
-            '                                                    <div class="col-md-10">\n' +
-            '                                                        <div>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                        </div>\n' +
-            '                                                        <p>Good...!</p>\n' +
-            '                                                    </div>\n' +
-            '                                                    <div style="margin-bottom: 20px" style="margin-bottom: 20px"\n' +
-            '                                                         class="col-md-2">\n' +
-            '                                                        <img style="width: 50px" src="/resources/dist/img/1.jpg"\n' +
-            '                                                             alt="">\n' +
-            '                                                    </div>\n' +
-            '                                                    <div class="col-md-10">\n' +
-            '                                                        <div>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                        </div>\n' +
-            '                                                        <p>Good...!</p>\n' +
-            '                                                    </div>\n' +
-            '                                                    <div style="margin-bottom: 20px" class="col-md-2">\n' +
-            '                                                        <img style="width: 50px" src="/resources/dist/img/1.jpg"\n' +
-            '                                                             alt="">\n' +
-            '                                                    </div>\n' +
-            '                                                    <div class="col-md-10">\n' +
-            '                                                        <div>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                        </div>\n' +
-            '                                                        <p>Good...!</p>\n' +
-            '                                                    </div>\n' +
-            '                                                    <div style="margin-bottom: 20px" class="col-md-2">\n' +
-            '                                                        <img style="width: 50px" src="/resources/dist/img/1.jpg"\n' +
-            '                                                             alt="">\n' +
-            '                                                    </div>\n' +
-            '                                                    <div class="col-md-10">\n' +
-            '                                                        <div>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                        </div>\n' +
-            '                                                        <p>Good...!</p>\n' +
-            '                                                    </div>\n' +
-            '                                                    <div class="col-md-2">\n' +
-            '                                                        <img style="width: 50px" src="/resources/dist/img/1.jpg"\n' +
-            '                                                             alt="">\n' +
-            '                                                    </div>\n' +
-            '                                                    <div class="col-md-10">\n' +
-            '                                                        <div>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star checked"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                            <span class="fa fa-star"></span>\n' +
-            '                                                        </div>\n' +
-            '                                                        <p>Good...!</p>\n' +
-            '                                                    </div>\n' +
             '                                                </div>\n' +
             '                                            </div>\n' +
             '\n' +
@@ -1754,6 +1684,8 @@
             success: function (result) {
                 var pacSet=result.data.packages
                 $("#custom-tabs-two-homee").empty();
+                // to hide the review section when Packages were clicked
+                $("#ratings").empty();
                 for (let i = 0; i < pacSet.length; i++) {
                     var pack = pacSet[i];
 
@@ -1784,6 +1716,8 @@
     function loadReviewsAndRatings(event) {
         var centerid = event.path[0].getAttribute('data-centid');
         $("#ratings").empty();
+        // to hide the content of package details when reviews were clicked
+        $("#custom-tabs-two-homee").empty();
 
         $.ajax({
             url: '/review_ratings/wash_center/' + centerid,
