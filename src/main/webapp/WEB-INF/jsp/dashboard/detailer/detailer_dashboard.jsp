@@ -415,9 +415,9 @@
                         $('#myWashCenters').append('<div class="col-md-4 col-sm-12  ">\n' +
                             '                    <div>\n' +
                             '                        <div class="card" style="width: 18rem; ">\n' +
-                            '                            <button onclick="editCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#edit_washcenter" type="button" class="btn-edit"><i\n' +
+                            '                            <button onclick="editCenter(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#edit_washcenter" type="button" class="btn-edit"><i\n' +
                             '                                    class="far fa-edit"></i></button>\n' +
-                            '                            <button onclick="deleteCenter(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete_washcenter" type="button"\n' +
+                            '                            <button onclick="deleteCenter(event)" data-name="' + obj.name + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete_washcenter" type="button"\n' +
                             '                                    class="btn-delete"><i class="far fa-trash-alt"></i></button>\n' +
                             '\n' +
                             '                            <img src="/resources/dist/img/car.jpg" alt="...">\n' +
@@ -677,7 +677,6 @@
     function deleteCenter(event) {
         var userId = event.path[1].getAttribute('data-userid');
         var name = event.path[1].getAttribute('data-name');
-        console.log(userId)
 <%--        $('#deleteWashCenterId').text(userId);--%>
         $('#deleteWashCenterName').text(name);
         $('#confirmDeleteWashCenter').attr('data-userid', userId);
