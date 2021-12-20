@@ -1,4 +1,10 @@
 <%@include file="/WEB-INF/jspf/header.jspf" %>
+    <style>
+        .error {
+            color: red !important;
+            display: block;
+        }
+    </style>
 <section class="main-content">
     <button style="float: right" type="button" class="btn btn-primary" data-toggle="modal" data-target="#test3">Change Password</button>
     <div style="" class="modal fade" id="test3" tabindex="-1" role="dialog"
@@ -13,27 +19,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                <form class="form-signin" id="form">
                     <div class="form-group">
                         <label >Old Password:</label>
                         <div class="relative">
-                            <input class="form-control" type="password" pattern="https?://.+" required=""
-                                   placeholder="Type your Old Password..." id="oldpassword">
+                            <input class="form-control" type="password"
+                                   placeholder="Type your Old Password..." id="oldpassword" name="oldpassword" required autofocus>
                             <i class="fa fa-building"></i>
                         </div>
                     </div>
                     <div class="form-group">
                         <label >New Password:</label>
                         <div class="relative">
-                            <input class="form-control" type="password" pattern="https?://.+" required=""
-                                   placeholder="Type your New Password..." id="newpassword">
+                            <input class="form-control" type="password"
+                                   placeholder="Type your New Password..." id="newpassword" name="newpassword" required>
                             <i class="fa fa-building"></i>
                         </div>
                     </div>
                     <div class="form-group">
                         <label >Confirm Password:</label>
                         <div class="relative">
-                            <input class="form-control" type="password" pattern="https?://.+" required=""
-                                   placeholder="Re-enter your New Password..." id="confirmpassword">
+                            <input class="form-control" type="password"
+                                   placeholder="Re-enter your New Password..." id="confirmpassword" name="confirmpassword" required>
                             <i class="fa fa-building"></i>
                         </div>
                     </div>
@@ -41,6 +48,7 @@
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                         <button type="button" class="btn btn-primary" onclick="changePassword()">Save</button>
                     </div>
+                </form>
                 </div>
 
             </div>
@@ -132,27 +140,48 @@
 
     var notificationCount = 0;
     $(function () {
-        // $.ajax({
-        //     url: '/notifications',
-        //     method: 'get',
-        //     contentType: "application/json",
-        //     headers: {
-        //         "Authorization": "Bearer " + token
-        //     },
-        //     success: function (result) {
-        //         for (const obj of result.data) {
-        //             if(obj.receiver.id == user){
-        //                 if(obj.state == "UNSEEN"){
-        //                     notificationCount = notificationCount+1;
-        //                 }
-        //             }
-        //
-        //         }
-        //         $("#notiCount").text(notificationCount);
-        //     },
-        //     error: function (err) {
-        //     }
-        // });
+        // validations for form
+        $.validator.addMethod("newpassword",function(value,element){
+        return this.optional(element) ||  /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/.test(value);
+        },"Password must contains at least one uppercase letter, one lowercase letter , one special character , one number and minimum 8 characters");
+
+        $('#form').validate({
+            rules: {
+                oldpassword: {
+                    minlength: 8,
+                    required: true,
+                },
+                newpassword: {
+                    minlength: 8,
+                    required: true,
+                },
+                confirmpassword: {
+                    minlength: 8,
+                    required: true,
+                    equalTo : "#newpassword"
+                }
+            },
+            messages: {
+                oldpassword: {
+                    required: "Please provide a password"
+                },
+                newpassword: {
+                    required: "Please provide the new password",
+                    minlength: "Your password must be at least 8 characters long",
+                    regex: "Password must contains at least one uppercase letter, one lowercase letter and one number"
+                },
+                confirmpassword: {
+                    required: "Please provide confirm password",
+                    minlength: "Your password must be at least 8 characters long",
+                    regex: "Password must contains at least one uppercase letter, one lowercase letter and one number",
+                    equalTo: "Password does not match"
+                }
+
+            },
+            submitHandler: function (form, event) {
+                console.log('submit');
+            }
+        });
         console.log(user)
 
 
