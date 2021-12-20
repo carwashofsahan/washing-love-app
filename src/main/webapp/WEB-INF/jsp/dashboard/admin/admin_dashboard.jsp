@@ -197,7 +197,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Reject <br>
-                            <span class="font-weight-bold">User ID <span id="rejectUserId"></span></span></h4>
+                            <span class="font-weight-bold">User: <span id="rejectUserName"></span></span></h4>
 
                         <div class="col-12 text-center">
                             <button id="confirmRejectBtn" onclick="ConfirmRejectUser(event)"
@@ -223,7 +223,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Approve <br>
-                            <span class="font-weight-bold">User ID <span id="approveUserId"></span></span></h4>
+                            <span class="font-weight-bold">User: <span id="approveUserName"></span></span></h4>
 
                         <div class="col-12 text-center">
                             <button id="confirmApproveBtn" onclick="ConfirmApprovUser(event)"
@@ -249,7 +249,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4 class="text-center">Do you want to Delete <br>
-                            <span class="font-weight-bold">User ID <span id="deleteUserId"></span></span></h4>
+                            <span class="font-weight-bold"><span id="deleteUserName"></span></span></h4>
 
                         <div class="col-12 text-center">
                             <button id="confirmDeleteBtn" onclick="ConfirmDeleteUser(event)"
@@ -512,8 +512,8 @@
                         '                                                        <h6 class="card-text">' + obj.phone + '</h6>\n' +
                         '                                                        <h6 class="card-text">' + obj.city + '</h6>\n' +
                         '                                                        <div class="col-12 text-center">\n' +
-                        '                                                            <button onclick="ApprovUser(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#approve" class="btn btn-success">Approve</button>\n' +
-                        '                                                            <button onclick="RejectUser(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#reject" class="btn btn-danger">Reject</button>\n' +
+                        '                                                            <button onclick="ApprovUser(event)" data-name="' + obj.firstname + ' ' + obj.lastname + '"  data-userid="' + obj.id + '" data-toggle="modal" data-target="#approve" class="btn btn-success">Approve</button>\n' +
+                        '                                                            <button onclick="RejectUser(event)" data-name="' + obj.firstname + ' ' + obj.lastname + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#reject" class="btn btn-danger">Reject</button>\n' +
                         '                                                        </div>\n' +
                         '                                                    </div>\n' +
                         '                                                </div>\n' +
@@ -552,7 +552,7 @@
                                 '                                                        <div class="col-12 text-center">\n' +
                                 '                                                            <button onclick="ConfirmLockUser(event)" data-userid="' + obj.id + '" class="btn btn-success">Lock &nbsp;<i\n' +
                                 '                                                                    class="fas fa-unlock"></i></button>\n' +
-                                '                                                            <button onclick="DeleteUser(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete"\n' +
+                                '                                                            <button onclick="DeleteUser(event)" data-username="' + obj.firstname + ' ' + obj.lastname + '" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete"\n' +
                                 '                                                                    class="btn btn-danger">Delete\n' +
                                 '                                                            </button>\n' +
                                 '                                                        </div>\n' +
@@ -572,7 +572,7 @@
                                 '                                                        <div class="col-12 text-center">\n' +
                                 '                                                            <button onclick="ConfirmApprovUser(event)" data-userid="' + obj.id + '" class="btn btn-success">Unlock &nbsp;<i\n' +
                                 '                                                                    class="fas fa-unlock"></i></button>\n' +
-                                '                                                            <button onclick="DeleteUser(event)" data-userid="' + obj.id + '"  data-toggle="modal" data-target="#delete"\n' +
+                                '                                                            <button onclick="DeleteUser(event)" data-username="' + obj.firstname + ' ' + obj.lastname + '"   data-userid="' + obj.id + '"  data-toggle="modal" data-target="#delete"\n' +
                                 '                                                                    class="btn btn-danger">Delete\n' +
                                 '                                                            </button>\n' +
                                 '                                                        </div>\n' +
@@ -889,7 +889,8 @@
     //-----------------------------------------user--------------------------------------
     function ApprovUser(event) {
         var userId = event.path[0].getAttribute('data-userid')
-        $('#approveUserId').text(userId);
+        var name = event.path[0].getAttribute('data-name')
+        $('#approveUserName').text(name);
         $('#confirmApproveBtn').attr('data-userid', userId);
     }
 
@@ -1145,8 +1146,9 @@
 
 
     function RejectUser(event) {
-        var userId = event.path[0].getAttribute('data-userid')
-        $('#rejectUserId').text(userId);
+        var userId = event.path[0].getAttribute('data-userid');
+        var name = event.path[0].getAttribute('data-name');
+        $('#rejectUserName').text(name);
         $('#confirmRejectBtn').attr('data-userid', userId);
 
     }
@@ -1191,8 +1193,9 @@
     }
 
     function DeleteUser(event) {
-        var userId = event.path[0].getAttribute('data-userid')
-        $('#deleteUserId').text(userId);
+        var userId = event.path[0].getAttribute('data-userid');
+        var name = event.path[0].getAttribute('data-username');
+        $('#deleteUserName').text(name);
         $('#confirmDeleteBtn').attr('data-userid', userId);
     }
 
@@ -1456,7 +1459,7 @@
                                 '                                                        <div class="col-12 text-center">\n' +
                                 '                                                            <button onclick="ConfirmLockUser(event)" data-userid="' + obj.id + '" class="btn btn-success">Lock &nbsp;<i\n' +
                                 '                                                                    class="fas fa-unlock"></i></button>\n' +
-                                '                                                            <button onclick="DeleteUser(event)" data-userid="' + obj.id + '" data-toggle="modal" data-target="#delete"\n' +
+                                '                                                            <button onclick="DeleteUser(event)" data-username="' + obj.firstname + ' ' + obj.lastname + '" data-toggle="modal" data-target="#delete"\n' +
                                 '                                                                    class="btn btn-danger">Delete\n' +
                                 '                                                            </button>\n' +
                                 '                                                        </div>\n' +
@@ -1476,7 +1479,7 @@
                                 '                                                        <div class="col-12 text-center">\n' +
                                 '                                                            <button onclick="ConfirmApprovUser(event)" data-userid="' + obj.id + '" class="btn btn-success">Unlock &nbsp;<i\n' +
                                 '                                                                    class="fas fa-unlock"></i></button>\n' +
-                                '                                                            <button onclick="DeleteUser(event)" data-userid="' + obj.id + '"  data-toggle="modal" data-target="#delete"\n' +
+                                '                                                            <button onclick="DeleteUser(event)" data-username="' + obj.firstname + ' ' + obj.lastname + '" data-toggle="modal" data-target="#delete"\n' +
                                 '                                                                    class="btn btn-danger">Delete\n' +
                                 '                                                            </button>\n' +
                                 '                                                        </div>\n' +
