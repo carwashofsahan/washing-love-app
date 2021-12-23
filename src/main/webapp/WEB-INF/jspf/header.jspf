@@ -48,104 +48,6 @@
     <link rel="stylesheet" href="/resources/dist/css/landing.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/resources/dist/css/dealer.css">
-
-
-    <%--    <style>--%>
-
-    <%--        .dropdown-menu {--%>
-    <%--            height: 180px;--%>
-    <%--            overflow-y: scroll;--%>
-    <%--        }--%>
-
-    <%--        .btn-florplan {--%>
-    <%--            background-color: #656d78;--%>
-    <%--            color: white;--%>
-    <%--            border: none;--%>
-    <%--        }--%>
-
-    <%--        .btn-submit {--%>
-
-    <%--        }--%>
-
-    <%--        .btn-new-lacation {--%>
-    <%--            background-color: #ec87cd;--%>
-    <%--        }--%>
-
-    <%--        .btn-delete {--%>
-    <%--            background-color: #da4453;--%>
-    <%--        }--%>
-
-    <%--        .btn-edit {--%>
-    <%--            /*background-color: #f5e923;*/--%>
-    <%--            width: 48px;--%>
-    <%--            color: #e39f0b;--%>
-    <%--            height: 48px;--%>
-    <%--            padding: 13px 14px;--%>
-    <%--            font-size: 18px;--%>
-    <%--            line-height: 23px;--%>
-    <%--            border-radius: 100%;--%>
-    <%--            border: 1px solid #e39f0b;--%>
-    <%--        }--%>
-
-    <%--        .btn-edit:hover {--%>
-    <%--            color: white;--%>
-    <%--            background-color: #e39f0b;--%>
-    <%--        }--%>
-
-    <%--        .btn-view {--%>
-    <%--            background-color: #4FC1E9;--%>
-    <%--        }--%>
-
-
-    <%--        .btn-add-workorder {--%>
-    <%--            background-color: #48cfad !important;--%>
-    <%--            color: white;--%>
-    <%--            border: none;--%>
-    <%--        }--%>
-
-
-    <%--        .btn-add-action {--%>
-    <%--            background-color: #ed5565 !important;--%>
-    <%--            color: white;--%>
-    <%--            border: none;--%>
-    <%--        }--%>
-
-    <%--        .btn-document {--%>
-    <%--            background-color: #967ADC !important;--%>
-    <%--            color: white;--%>
-    <%--            border: none;--%>
-    <%--        }--%>
-
-    <%--        /*--------------------------------------------------*/--%>
-    <%--        .error {--%>
-    <%--            color: red;--%>
-    <%--        }--%>
-
-    <%--        .imageThumb {--%>
-    <%--            max-height: 75px;--%>
-    <%--            padding: 1px;--%>
-    <%--            cursor: pointer;--%>
-    <%--        }--%>
-
-    <%--        .pip {--%>
-    <%--            display: inline-block;--%>
-    <%--            margin: 10px 10px 0 0;--%>
-    <%--        }--%>
-
-    <%--        .remove {--%>
-    <%--            display: block;--%>
-    <%--            background: #444;--%>
-    <%--            border: 1px solid black;--%>
-    <%--            color: white;--%>
-    <%--            text-align: center;--%>
-    <%--            cursor: pointer;--%>
-    <%--        }--%>
-
-    <%--        .remove:hover {--%>
-    <%--            background: white;--%>
-    <%--            color: black;--%>
-    <%--        }--%>
-    <%--    </style>--%>
 </head>
 <body class="">
 <section class="navigation">
@@ -207,7 +109,7 @@
                         <a style="line-height: 60px" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
                            data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <img src="/resources/dist/img/1.jpg " alt=""
+                            <img id="customer_profile_picture" src="/resources/dist/img/1.jpg " alt=""
                                  class="user-avatar-md rounded-circle"></a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                              aria-labelledby="navbarDropdownMenuLink2">
@@ -282,7 +184,7 @@
                         <a style="line-height: 60px" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
                            data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <img src="/resources/dist/img/1.jpg " alt=""
+                            <img id="detailer_profile_picture" src="/resources/dist/img/1.jpg " alt=""
                                  class="user-avatar-md rounded-circle"></a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                              aria-labelledby="navbarDropdownMenuLink2">
@@ -346,7 +248,7 @@
                         <a style="line-height: 60px" class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
                            data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <img src="/resources/dist/img/1.jpg " alt=""
+                            <img id="admin_profile_picture" src="/resources/dist/img/1.jpg " alt=""
                                  class="user-avatar-md rounded-circle"></a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                              aria-labelledby="navbarDropdownMenuLink2">
@@ -372,125 +274,6 @@
         </nav>
     </div>
 </section>
-<%--<div class="wrapper">--%>
-
-
-<%--</div>--%>
-
-<%--<style>--%>
-<%--    body {--%>
-<%--        font-family: Rubik, sans-serif !important;--%>
-<%--    }--%>
-
-<%--    .set-header-padding {--%>
-<%--        font-size: 14px !important;--%>
-<%--        padding: 0px !important;--%>
-<%--    }--%>
-
-<%--    .set-header-padding nav ul li {--%>
-<%--        border-radius: 0px !important;--%>
-<%--    }--%>
-
-<%--    .nav-pills .nav-link {--%>
-<%--        border-radius: 0px !important;--%>
-<%--    }--%>
-
-<%--    [class*=sidebar-dark-] .sidebar a {--%>
-<%--        color: gray !important;--%>
-<%--    }--%>
-
-<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item:hover > .nav-link, [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-link:focus {--%>
-<%--        background-color: rgba(0, 0, 0, .2);--%>
-<%--    }--%>
-
-<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item:hover > .nav-link {--%>
-
-<%--    }--%>
-
-<%--    .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {--%>
-<%--        background-color: rgba(0, 0, 0, .5);--%>
-<%--        border-right: 10px solid #8cc152;--%>
-<%--        color: white !important;--%>
-<%--    }--%>
-
-<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item.menu-open > .nav-link {--%>
-<%--        background-color: rgba(0, 0, 0, .5);--%>
-<%--        border-right: 10px solid #8cc152;--%>
-<%--    }--%>
-
-<%--    [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-link:active {--%>
-<%--        background-color: rgba(0, 0, 0, .07);--%>
-<%--    }--%>
-
-<%--    [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link.active {--%>
-<%--        color: white !important;--%>
-<%--        background-color: #20222a;--%>
-<%--        border-right: 10px solid #8cc152;--%>
-<%--    }--%>
-
-<%--    [class*=sidebar-dark-] .nav-treeview > .nav-item > .nav-link {--%>
-<%--        padding-left: 15px !important;;--%>
-<%--    }--%>
-
-<%--    .navbar-nav > .user-menu > .dropdown-menu > li.user-header {--%>
-<%--        height: 100px !important;--%>
-
-<%--    }--%>
-
-<%--    .bg-green {--%>
-<%--        /*background-image: linear-gradient(#A0D468,#2E8B57)!important;*/--%>
-<%--        background-color: white !important;--%>
-<%--        margin-left: 10px;--%>
-<%--        margin-right: 10px;--%>
-<%--        border-bottom: #E9E9E9 thin solid;--%>
-<%--        color: #0a0e14 !important;--%>
-<%--    }--%>
-
-<%--    .navbar-nav > .user-menu > .dropdown-menu {--%>
-<%--        width: 270px !important;--%>
-<%--    }--%>
-
-<%--    .user-img-new {--%>
-<%--        margin: 5px;--%>
-<%--        border-radius: 100%;--%>
-<%--        height: 60px !important;--%>
-<%--        width: 60px !important;--%>
-<%--        border: none !important;--%>
-<%--        box-shadow: none !important;--%>
-<%--    }--%>
-
-<%--    .btn-primary {--%>
-<%--        background-color: #A0D468;--%>
-<%--        border: #A0D468;--%>
-<%--    }--%>
-
-<%--    .btn-primary:hover {--%>
-<%--        background-color: #8cc152;--%>
-<%--    }--%>
-
-<%--    .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {--%>
-<%--        background-color: #8cc152 !important;--%>
-<%--    }--%>
-
-<%--    .content-wrapper {--%>
-<%--        margin-top: 50px;--%>
-<%--    }--%>
-
-<%--    h5 {--%>
-<%--        font-size: 16px !important;--%>
-<%--        font-weight: 500;--%>
-<%--    }--%>
-
-<%--    label {--%>
-<%--        font-size: 14px;--%>
-<%--        font-weight: normal !important;--%>
-<%--    }--%>
-
-<%--    .card {--%>
-<%--        box-shadow: none !important;--%>
-<%--        border-radius: 0px;--%>
-<%--    }--%>
-<%--</style>--%>
 </body>
 <!-- jQuery -->
 <script src="/resources/plugins/jquery/jquery.min.js"></script>
@@ -499,6 +282,10 @@
 <script>
     var user = '${user}';
     var token = '${token}';
+    var customerProfilePic = document.getElementById('customer_profile_picture');
+    var detailerProfilePic = document.getElementById('detailer_profile_picture');
+    var adminProfilePic = document.getElementById('admin_profile_picture');
+
     $(function () {
         $.ajax({
             url: '/users/' + user,
@@ -508,7 +295,30 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                $('.userNames').text(result.data.firstname + ' ' + result.data.lastname);
+                if(result && result.data){
+                    $('.userNames').text(result.data.firstname + ' ' + result.data.lastname);
+                    if(result.data.image){
+                        if(customerProfilePic) {
+                            customerProfilePic.setAttribute('src','data:image/jpg;base64,' + result.data.image);
+                        }
+                        if(detailerProfilePic) {
+                            detailerProfilePic.setAttribute('src','data:image/jpg;base64,' + result.data.image);
+                        }
+                        if(adminProfilePic) {
+                            adminProfilePic.setAttribute('src','data:image/jpg;base64,' + result.data.image);
+                        }
+                    } else {
+                        if(customerProfilePic) {
+                            customerProfilePic.setAttribute('src','/resources/dist/img/1.jpg');
+                        }
+                        if(detailerProfilePic) {
+                            detailerProfilePic.setAttribute('src','/resources/dist/img/1.jpg');
+                        }
+                        if(adminProfilePic) {
+                            adminProfilePic.setAttribute('src','/resources/dist/img/1.jpg');
+                        }
+                    }
+                }
 
             },
             error: function (err) {
