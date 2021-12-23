@@ -29,5 +29,6 @@ public class User {
     @NotNull(message = "state is mandatory")
     private UserState state;
     private String token;
+    private String image;
 
 }
