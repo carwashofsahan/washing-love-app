@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -161,11 +162,36 @@ public class UserServiceImpl implements UserService {
 
     private User getUserDto(org.wl.entity.User user) {
         User userDto = mapper.map(user, User.class);
+        userDto.setImage(Base64.getEncoder().encodeToString(user.getImage()));
         return userDto;
     }
 
     private org.wl.entity.User getUser(User userDto) {
-        org.wl.entity.User user = mapper.map(userDto, org.wl.entity.User.class);
+        // find the user from the db
+        org.wl.entity.User user = repo.findUserById(userDto.getId());
+        // update the user using the data from DTO
+        if (user != null) {
+            user.setId(userDto.getId());
+            user.setFirstname(userDto.getFirstname());
+            user.setLastname(userDto.getLastname());
+            user.setEmail(userDto.getEmail());
+            user.setAddress(userDto.getAddress());
+            user.setCity(userDto.getCity());
+            user.setPhone(userDto.getPhone());
+            user.setPassword(userDto.getPassword());
+            // check if the profile image is provided and if does then save it as bytes
+            try {
+                if (userDto.getImage() != null) {
+                    user.setImage(Base64.getDecoder().decode(userDto.getImage().split(",")[1]));
+                } else {
+                    System.out.println("No User image found!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("User can not be found for ID: " + userDto.getId());
+        }
         return user;
     }
 
