@@ -317,6 +317,8 @@
                     success: function (result) {
                         // refresh the user details after update
                         reloadUserData();
+                        // reload the page only when new image is uploaded to update profile picture
+                        location.reload();
                     },
                     error: function (err) {
                         console.log('err')
