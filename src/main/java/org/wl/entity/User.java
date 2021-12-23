@@ -22,6 +22,9 @@ public class User {
     @OneToOne
     private Role role;
     private UserState state;
+    // for user profile picture
+    @Lob
+    private byte[] image;
 
     public void setPassword(final String password) {
         this.password = CommonUtil.encrypt(password);
