@@ -162,7 +162,9 @@ public class UserServiceImpl implements UserService {
 
     private User getUserDto(org.wl.entity.User user) {
         User userDto = mapper.map(user, User.class);
-        userDto.setImage(Base64.getEncoder().encodeToString(user.getImage()));
+        if (user.getImage() != null && user.getImage().length > 0){
+            userDto.setImage(Base64.getEncoder().encodeToString(user.getImage()));
+        }
         return userDto;
     }
 
@@ -181,7 +183,7 @@ public class UserServiceImpl implements UserService {
             user.setPassword(userDto.getPassword());
             // check if the profile image is provided and if does then save it as bytes
             try {
-                if (userDto.getImage() != null) {
+                if (userDto.getImage() != null && !userDto.getImage().isEmpty()) {
                     user.setImage(Base64.getDecoder().decode(userDto.getImage().split(",")[1]));
                 } else {
                     System.out.println("No User image found!");
