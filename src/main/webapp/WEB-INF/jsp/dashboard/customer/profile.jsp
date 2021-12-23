@@ -59,7 +59,7 @@
             <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
                 <div style="width: 500px" class="profile-card card rounded-lg shadow p-4 p-xl-5 mb-4 text-center position-relative overflow-hidden">
                     <div class="banner"></div>
-                    <img src="/resources/dist/img/1.jpg" alt="" class="user-circle mx-auto mb-3">
+                    <img id="image_circle" src="/resources/dist/img/1.jpg" alt="" class="user-circle mx-auto mb-3">
                     <h3 class="mb-4" id="nameHeading">Sahan Pradeepa</h3>
                     <div class="text-left mb-4">
                         <div class="form-group">
@@ -106,6 +106,17 @@
 <%--                                <i class="fa fa-building"></i>--%>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label >Image:</label>
+                            <div id="image-preview">
+                                <img id="blah" width="200" height="200" class="ml-5 mb-2" />
+                            </div>
+                            <div class="relative">
+                                <input class="form-control" type="file" id="image"
+                                onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0]);">
+<%--                                <i class="fa fa-building"></i>--%>
+                            </div>
+                        </div>
                         <div style="float: right">
                             <button type="button" class="btn btn-primary" >Cancel</button>
                             <button type="button" class="btn btn-primary" onclick="updateProfile()">Save</button>
@@ -137,6 +148,10 @@
     var phone;
     var role;
     var state;
+    var image;
+
+    var profilePic = document.getElementById('image_circle');
+    var previewProfilePic = document.getElementById('blah');
 
     var notificationCount = 0;
     $(function () {
@@ -209,7 +224,13 @@
                 $("#contact").attr("value",phone);
                 $("#address").attr("value",address);
 
-                $("#nameHeading").text(firstname+" "+lastname)
+                $("#nameHeading").text(firstname+" "+lastname);
+                // setting the profile picture from bytes received from database for the user
+                if(result.data.image) {
+                    image = result.data.image;
+                    profilePic.setAttribute('src','data:image/jpg;base64,' + result.data.image);
+                    previewProfilePic.setAttribute('src','data:image/jpg;base64,' + result.data.image);
+                }
 
             },
             error: function (err) {
@@ -220,42 +241,105 @@
 
     });
 
+    function getBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    }
+
     function updateProfile() {
 
         address =  $('#address').val(),
-            firstname =  $('#firstname').val(),
-            lastname =  $('#lastname').val(),
-            phone =  $('#contact').val(),
-            email =  $('#email').val()
+        firstname =  $('#firstname').val(),
+        lastname =  $('#lastname').val(),
+        phone =  $('#contact').val(),
+        email =  $('#email').val()
 
+        var fileImage = document.querySelector("#image").files[0];
+
+        if(!fileImage) {
+            $.ajax({
+                    url: '/users',
+                    method: 'put',
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        id: user,
+                        address: address,
+                        city : city,
+                        email : email,
+                        firstname : firstname,
+                        lastname : lastname,
+                        password : password,
+                        phone : phone,
+                        role : role,
+                        state : state,
+                        image: image
+                    }),
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    success: function (result) {
+                        // refresh the user details after update
+                        reloadUserData();
+                    },
+                    error: function (err) {
+                        console.log('err')
+                        console.log( err);
+                    }
+                });
+
+        } else {
+            getBase64(fileImage).then(
+            imageData => {
+                $.ajax({
+                    url: '/users',
+                    method: 'put',
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        id: user,
+                        address: address,
+                        city : city,
+                        email : email,
+                        firstname : firstname,
+                        lastname : lastname,
+                        password : password,
+                        phone : phone,
+                        role : role,
+                        state : state,
+                        image: imageData
+                    }),
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    success: function (result) {
+                        // refresh the user details after update
+                        reloadUserData();
+                    },
+                    error: function (err) {
+                        console.log('err')
+                        console.log( err);
+                    }
+                });
+            });
+        }
+    }
+
+    function reloadUserData() {
         $.ajax({
-            url: '/users',
-            method: 'put',
+            url: '/users/'+user,
+            method: 'get',
             contentType: "application/json",
-            data: JSON.stringify({
-                id: user,
-                address: address,
-                city : city,
-                email : email,
-                firstname : firstname,
-                lastname : lastname,
-                password : password,
-                phone : phone,
-                role : role,
-                state : state
-            }),
             headers: {
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                $("#nameHeading").text(firstname+" "+lastname)
-            },
-            error: function (err) {
-                console.log('err')
-                console.log( err);
-            }
-        });
-
+                $("#nameHeading").text(result.data.firstname+" "+result.data.lastname);
+                profilePic.setAttribute('src','data:image/jpg;base64,' + result.data.image);
+                previewProfilePic.setAttribute('src','data:image/jpg;base64,' + result.data.image);
+            }});
     }
 
     function changePassword() {
