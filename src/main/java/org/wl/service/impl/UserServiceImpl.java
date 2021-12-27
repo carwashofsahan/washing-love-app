@@ -184,7 +184,11 @@ public class UserServiceImpl implements UserService {
             // check if the profile image is provided and if does then save it as bytes
             try {
                 if (userDto.getImage() != null && !userDto.getImage().isEmpty()) {
-                    user.setImage(Base64.getDecoder().decode(userDto.getImage().split(",")[1]));
+                    if (userDto.getImage().split(",").length > 1) {
+                        user.setImage(Base64.getDecoder().decode(userDto.getImage().split(",")[1]));
+                    } else {
+                        user.setImage(Base64.getDecoder().decode(userDto.getImage()));
+                    }
                 } else {
                     System.out.println("No User image found!");
                 }
@@ -192,7 +196,19 @@ public class UserServiceImpl implements UserService {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("User can not be found for ID: " + userDto.getId());
+            // creating a new user object
+            System.out.println("Creating a new User instance");
+            user = mapper.map(userDto, org.wl.entity.User.class);
+            // check if the profile image is provided and if does then save it as bytes
+            try {
+                if (userDto.getImage() != null && !userDto.getImage().isEmpty()) {
+                    user.setImage(Base64.getDecoder().decode(userDto.getImage().split(",")[1]));
+                } else {
+                    System.out.println("No User image found!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return user;
     }

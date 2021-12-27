@@ -22,6 +22,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="/resources/dist/css/customer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <style>
         /** {*/
         /*    box-sizing: border-box;*/
@@ -193,6 +195,11 @@
             background-size: cover;
         }
 
+        .submit-button {
+            background-color: rgba(0, 51, 69, 0.8) !important;
+            width: 100%
+        }
+
     </style>
 </head>
 <body style="background-image: url('/resources/dist/img/back.jpg');background-size: cover;"
@@ -203,10 +210,10 @@
         <div class="row">
             <div class="col-md-8"></div>
             <div class="col-md-4 ">
-                <div style="" class="log  p-4">
+                <div style="" class="profile-card card log  p-4">
                     <h2>S I G N U P</h2>
                     <form class="form-signin" id="form">
-                        <input type="email" name="email" id="email" class="form-control mb-3"
+                        <input type="email" name="email" id="email" class="form-control"
                                placeholder="Email address" required autofocus>
                         <button onclick="sendOtp()" id="sendOtpBtn" type="button"
                                 class="btn btn-primary fogetbtn">
@@ -252,9 +259,20 @@
                             </label>
 
                         </div>
+
+                        <div class="form-group mt-2">
+                            <label >Image:</label>
+                            <div id="image-preview">
+                                <img id="image" width="200" height="200" class="ml-5 mb-2" />
+                            </div>
+                            <div class="relative">
+                                <input class="form-control" type="file" id="image_input"
+                                onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0]);">
+                            </div>
+                        </div>
                         </br>
                         <span id="msg"></span>
-                        <button disabled type="submit" id="submitBtn" class="btn btn-lg  btn-block mt-3 ">
+                        <button disabled type="submit" id="submitBtn" class="btn btn-primary submit-button mt-3 ">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
                                   style="display: none"></span>
                             Sign Up
@@ -351,6 +369,8 @@
 
                     var selectedVal = "";
                     var selected = $("input[type='radio'][name='role']:checked");
+                    var fileImage = document.querySelector("#image_input").files[0];
+
                     if (selected.length > 0) {
                         selectedVal = selected.val();
                     }
@@ -364,7 +384,9 @@
 
 
                     if (conpass == pass) {
-                        $.ajax({
+                        getBase64(fileImage).then(
+                            imageData => {
+                                 $.ajax({
                             url: '/users/sign_up',
                             method: 'post',
                             contentType: "application/json",
@@ -381,7 +403,8 @@
                                     id: "",
                                     name: selectedVal
                                 },
-                                state: "PENDING"
+                                state: "PENDING",
+                                image: imageData
                             }),
                             success: function (result) {
                                 $(".spinner-border").hide();
@@ -396,6 +419,7 @@
                                 clearText();
                             }
                         });
+                            });
                     }else {
                         $('#password1').val('');
                         $(".spinner-border").hide();
@@ -417,6 +441,15 @@
             });
         }
     );
+
+    function getBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+    }
 
     function clearText() {
         $('#firstname').val("");
