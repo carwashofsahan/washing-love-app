@@ -47,6 +47,12 @@
 
 </head>
 <body>
+<style>
+    .error {
+        color: red !important;
+        display: block;
+    }
+</style>
 <section class="main-content">
     <div class="container">
         <div class="row">
@@ -54,11 +60,12 @@
                 <div style="width: 500px"
                      class="profile-card card rounded-lg shadow p-4 p-xl-5 mb-4 text-center position-relative overflow-hidden">
                     <h3 class="mb-4" id="nameHeading">Foget Password</h3>
-                    <div class="text-left mb-4">
+                    <form class="form-signin" id="form">
+                        <div class="text-left mb-4">
                         <div class="form-group">
                             <label>Email address:</label>
                             <div class="relative">
-                                <input class="form-control" type="email" placeholder="Enter your email" id="email"
+                                <input class="form-control" type="email" placeholder="Enter your email" id="email" name="email"
 
                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                                 <button onclick="sendOtp()" id="sendOtpBtn" type="button"
@@ -88,7 +95,7 @@
                         <div class="form-group">
                             <label>New Password</label>
                             <div class="relative">
-                                <input disabled class="form-control" id="newPassword" type="password"
+                                <input disabled class="form-control" id="newPassword" name="newPassword" type="password"
                                        pattern="[a-zA-Z\s]+" required="" autofocus="">
 
                             </div>
@@ -96,7 +103,7 @@
                         <div class="form-group">
                             <label>Re-enter New password</label>
                             <div class="relative">
-                                <input disabled class="form-control" id="confirmPassword" type="password"
+                                <input disabled class="form-control" id="confirmPassword" name="confirmPassword" type="password"
                                        pattern="[a-zA-Z\s]+" required="" autofocus="">
 
                             </div>
@@ -112,6 +119,7 @@
 
 
                     </div>
+                    </form>
                     <span id="msg"></span>
                     <h6 style="margin-top: 10px">If already registered
                         <a style="font-weight: bold" href="/users/loginView"> Login</a></h6>
@@ -132,6 +140,41 @@
     var user;
     var email;
     var otp;
+
+    $.validator.addMethod("newPassword",function(value,element){
+    return this.optional(element) ||  /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/.test(value);
+    },"Password must contains at least one uppercase letter, one lowercase letter , one special character , one number and minimum 8 characters");
+
+    $('#form').validate({
+            rules: {
+                newPassword: {
+                    minlength: 8,
+                    required: true,
+                },
+                confirmPassword: {
+                    minlength: 8,
+                    required: true,
+                    equalTo : "#newpassword"
+                }
+            },
+            messages: {
+                newPassword: {
+                    required: "Please provide the new password",
+                    minlength: "Your password must be at least 8 characters long",
+                    regex: "Password must contains at least one uppercase letter, one lowercase letter and one number"
+                },
+                confirmPassword: {
+                    required: "Please provide confirm password",
+                    minlength: "Your password must be at least 8 characters long",
+                    regex: "Password must contains at least one uppercase letter, one lowercase letter and one number",
+                    equalTo: "Password does not match"
+                }
+
+            },
+            submitHandler: function (form, event) {
+                console.log('submit');
+            }
+        });
 
     function sendOtp() {
         $('#msg').empty();
