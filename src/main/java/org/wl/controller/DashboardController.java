@@ -145,7 +145,7 @@ public class DashboardController {
             modelAndView.addObject("token",token);
             modelAndView.addObject("user",user);
             modelAndView.addObject("userType",userType);
-            System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType);
+            System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType + " redirectPath: " + redirectPath);
         } else {
             return new ModelAndView("auth/login");
         }

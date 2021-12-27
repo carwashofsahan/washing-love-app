@@ -599,13 +599,13 @@ public class UserController {
             modelAndView.addObject("token", tokenParam);
             modelAndView.addObject("user", userParam);
             modelAndView.addObject("userType", userTypeParam);
-            System.out.println("user: " + userParam + ", token: " + tokenParam+ ", userType: " + userTypeParam);
+            System.out.println("user: " + userParam + ", token: " + tokenParam+ ", userType: " + userTypeParam +  " redirectPath: " + redirectPath);
         } else if(token != null && user != null ) {
             // set values using attributes in Httpsession
             modelAndView.addObject("token",token);
             modelAndView.addObject("user",user);
             modelAndView.addObject("userType",userType);
-            System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType);
+            System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType +  " redirectPath: " + redirectPath);
         } else {
             return new ModelAndView("auth/login");
         }
