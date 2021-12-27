@@ -174,6 +174,7 @@ public class UserServiceImpl implements UserService {
         // update the user using the data from DTO
         if (user != null) {
             user.setId(userDto.getId());
+            user.setState(userDto.getState());
             user.setFirstname(userDto.getFirstname());
             user.setLastname(userDto.getLastname());
             user.setEmail(userDto.getEmail());
