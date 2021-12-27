@@ -16,6 +16,7 @@ import org.wl.repo.OtpRepo;
 import org.wl.repo.UserRepo;
 import org.wl.service.OtpService;
 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 
@@ -127,6 +128,7 @@ public class OtpServiceImpl implements OtpService {
 
         Resource resource = resourceLoader.getResource("file:src/main/resources/static/dist/img/wllogo.png");
         MimeMessage message = emailSender.createMimeMessage();
+        message.setFrom(new InternetAddress(senderEmail, "Washing Love"));
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(to);
@@ -168,6 +170,7 @@ public class OtpServiceImpl implements OtpService {
 
         Resource resource = resourceLoader.getResource("file:src/main/resources/static/dist/img/wllogo.png");
         MimeMessage message = emailSender.createMimeMessage();
+        message.setFrom(new InternetAddress(senderEmail, "Washing Love"));
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(to);
