@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.wl.util.CommonUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -134,7 +135,9 @@ public class DashboardController {
         Object user = httpSession.getAttribute("user");
         Object userType = httpSession.getAttribute("userType");
 
-        if (userParam != null && tokenParam != null) {
+        if (!CommonUtil.isLoggedIn) {
+            return new ModelAndView("auth/login");
+        } else if (userParam != null && tokenParam != null) {
             // set values using request params
             modelAndView.addObject("token", tokenParam);
             modelAndView.addObject("user", userParam);

@@ -16,6 +16,8 @@ public class CommonUtil {
     private static final String UNICODE_FORMAT = "UTF8";
     private static final String DESEDE_ENCRYPTION_SCHEME = "DESede";
     private static final String myEncryptionKey = "ThisIsSpartaThisIsSparta";
+    // to keep a flag for weather a user is currently logged in or not
+    public static Boolean isLoggedIn = false;
 
     public static Date convertDateFormat(String userInput) {
         Date date = null;

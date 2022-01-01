@@ -149,6 +149,7 @@ public class UserController {
         httpSession.removeAttribute("token");
         httpSession.removeAttribute("user");
         httpSession.removeAttribute("Authorization");
+        CommonUtil.isLoggedIn = false;
         return modelAndView;
     }
 
@@ -181,6 +182,7 @@ public class UserController {
 
             Role roledto = roleService.searchRoleById(userDto.getRole().getId());
             if (userDto.getState() == UserState.ACCEPTED) {
+                CommonUtil.isLoggedIn = true;
                 if (roledto.getName().equalsIgnoreCase("CUSTOMER")) {
                     return new ResponseEntity(new WashingLoveResponse(200, "Success", userDto), HttpStatus.OK);
                 } else if (roledto.getName().equalsIgnoreCase("DETAILER")) {
@@ -224,6 +226,7 @@ public class UserController {
 
             Role roledto = roleService.searchRoleById(userDto.getRole().getId());
             if (userDto.getState() == UserState.ACCEPTED) {
+                CommonUtil.isLoggedIn = true;
                 if (roledto.getName().equalsIgnoreCase("CUSTOMER")) {
 
 
@@ -354,7 +357,8 @@ public class UserController {
     /**
      * get All users by type.
      *
-     * @param userType  user type.
+     * @param Usertype  user type.
+     * @param request servlet request
      * @return Responce Entity.
      */
     @GetMapping("/type")
@@ -594,7 +598,9 @@ public class UserController {
         Object user = httpSession.getAttribute("user");
         Object userType = httpSession.getAttribute("userType");
 
-        if (userParam != null && tokenParam != null) {
+        if (!CommonUtil.isLoggedIn) {
+            return new ModelAndView("auth/login");
+        } else if (userParam != null && tokenParam != null) {
             // set values using request params
             modelAndView.addObject("token", tokenParam);
             modelAndView.addObject("user", userParam);
