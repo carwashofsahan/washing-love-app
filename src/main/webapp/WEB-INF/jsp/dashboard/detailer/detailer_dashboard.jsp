@@ -96,7 +96,7 @@
                                     <div class="form-group">
                                         <span class="form-label">Total Slots</span>
                                         <input class="form-control" type="number" min="1"
-                                               placeholder="Enter Contact Number" id="totalslot" name="totalslot">
+                                               placeholder="Enter Total Slots" id="totalslot" name="totalslot">
                                     </div>
                                 </div>
 
