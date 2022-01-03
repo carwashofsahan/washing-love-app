@@ -613,6 +613,7 @@ public class UserController {
             modelAndView.addObject("userType",userType);
             System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType +  " redirectPath: " + redirectPath);
         } else {
+            System.out.println("logout, redirectPath: " + redirectPath);
             return new ModelAndView("auth/login");
         }
         return modelAndView;
