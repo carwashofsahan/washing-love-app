@@ -465,6 +465,8 @@
     var token = '${token}';
     var user = '${user}';
     var notificationCount = 0;
+    console.log('token', token);
+    console.log('user', user);
 
     $(function () {
         $('.admin-adminstration').addClass("active");
@@ -904,7 +906,7 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                location.reload();
+                location.assign('/dashboards/admin?user=${user}&token=${token}&userType=${userType}');
             },
             error: function (err) {
                 alert("error occured while accepting")
@@ -1182,7 +1184,8 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                location.reload();
+                console.log('result: ', result);
+                location.assign('/dashboards/admin?user=${user}&token=${token}&userType=${userType}');
             },
             error: function (err) {
                 alert("error occured while accepting")
@@ -1321,7 +1324,7 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                location.reload();
+                location.assign('/dashboards/admin?user=${user}&token=${token}&userType=${userType}');
             },
             error: function (err) {
                 alert("error occured while accepting")
@@ -1349,7 +1352,7 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                location.reload();
+                location.assign('/dashboards/admin?user=${user}&token=${token}&userType=${userType}');
             },
             error: function (err) {
                 alert("error occured while accepting")
@@ -1376,7 +1379,7 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                location.reload();
+                location.assign('/dashboards/admin?user=${user}&token=${token}&userType=${userType}');
             },
             error: function (err) {
                 alert("error occured while accepting")
@@ -1402,7 +1405,7 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                location.reload();
+                location.assign('/dashboards/admin?user=${user}&token=${token}&userType=${userType}');
             },
             error: function (err) {
                 alert("error occured while accepting")

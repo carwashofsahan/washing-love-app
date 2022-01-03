@@ -659,7 +659,7 @@
                         state: 'PENDING'
                     }),
                     success: function (result) {
-                        location.reload();
+                        location.assign("/dashboards/detailer?user=${user}&token=${token}&userType=${userType}");
                     },
                     error: function (err) {
                         location.reload();
@@ -692,7 +692,7 @@
                 "Authorization": "Bearer " + token
             },
             success: function (result) {
-                location.reload();
+                location.assign("/dashboards/detailer?user=${user}&token=${token}&userType=${userType}");
             },
             error: function (err) {
                 alert("error occured while deleting")
