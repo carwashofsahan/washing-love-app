@@ -662,7 +662,7 @@
                         location.assign("/dashboards/detailer?user=${user}&token=${token}&userType=${userType}");
                     },
                     error: function (err) {
-                        location.reload();
+                        location.assign("/dashboards/detailer?user=${user}&token=${token}&userType=${userType}");
                     }
                 });
 
