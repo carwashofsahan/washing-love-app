@@ -82,7 +82,7 @@
                         <form  id="wash_center_book_form">
 
                             <div class="form-group">
-                                <span class="form-label">Vehicle Number</span>
+                                <span class="form-label required">Vehicle Number</span>
                                 <input class="form-control" type="text"
                                        placeholder="Enter vehicle number" id="vehicleNumber" name="vehicleNumber" required>
                             </div>
@@ -91,20 +91,20 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <span class="form-label">Date</span>
+                                        <span class="form-label required">Date</span>
                                         <input class="form-control datepicker" type="" id="bookingdate" name="bookingdate" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <span class="form-label">Time</span>
+                                        <span class="form-label required">Time</span>
                                         <input class="form-control" type="time" id="bookingtime" name="bookingtime" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <span class="form-label" for="flexRadioDefault">Select Package </span>
+                                            <span class="form-label required" for="flexRadioDefault">Select Package </span>
                                             <div id="selectpackages"></div>
                                         </div>
                                     </div>
@@ -914,4 +914,8 @@
             color: red !important;
             display: block;
         }
+    .required:after {
+        content:" *";
+        color: red;
+    }
 </style>
