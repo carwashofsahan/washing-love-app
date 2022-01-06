@@ -79,12 +79,12 @@
                     </div>
                     <div class="modal-body">
 
-                        <form>
+                        <form  id="wash_center_book_form">
 
                             <div class="form-group">
                                 <span class="form-label">Vehicle Number</span>
                                 <input class="form-control" type="text"
-                                       placeholder="Enter vehicle number" id="vehicleNumber">
+                                       placeholder="Enter vehicle number" id="vehicleNumber" name="vehicleNumber" required>
                             </div>
 
 
@@ -92,19 +92,19 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="form-label">Date</span>
-                                        <input class="form-control datepicker" type="" id="bookingdate" required>
+                                        <input class="form-control datepicker" type="" id="bookingdate" name="bookingdate" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="form-label">Time</span>
-                                        <input class="form-control" type="time" id="bookingtime" required>
+                                        <input class="form-control" type="time" id="bookingtime" name="bookingtime" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <span class="form-label">Select Package </span>
+                                            <span class="form-label" for="flexRadioDefault">Select Package </span>
                                             <div id="selectpackages"></div>
                                         </div>
                                     </div>
@@ -285,6 +285,53 @@
     var vehicleNo;
     var specialNote;
 
+
+    // validations for wash center add form
+    $('#wash_center_book_form').validate({
+            rules: {
+                vehicleNumber: {
+                    minlength: 7,
+                    maxlength: 10,
+                    required: true,
+                },
+                bookingdate: {
+                    required: true,
+                },
+                bookingtime: {
+                    required: true
+                },
+                flexRadioDefault: {
+                    required: true
+                },
+            },
+            messages: {
+                vehicleNumber: {
+                    required: "Please provide the vehicle Number",
+                    minlength: "Vehicle number should be at least 7 characters long",
+                    maxlength: "Vehicle number maximum should be 10 characters",
+                },
+                bookingdate: {
+                    required: "Please provide the booking date",
+                },
+                bookingtime: {
+                    required: "Please provide the booking time"
+                },
+                flexRadioDefault: {
+                    required: "Please select a package"
+                }
+
+            },
+            submitHandler: function (form, event) {
+                console.log('submit');
+            }
+        });
+    // disable book button based on valid state of the form
+    $('#wash_center_book_form input, #wash_center_book_form select,#wash_center_book_form radio, #wash_center_book_form textarea').on('change', checkForm);
+
+    function checkForm() {
+        console.log('valid: ', $('#wash_center_book_form').valid());
+        $('#bookModelBtn').prop('disabled', !$('#wash_center_book_form').valid());
+    }
 
     $(function () {
         $('.customer-bookawash').addClass("active");
@@ -661,7 +708,7 @@
                         '                                                    <tr>\n' +
                         '                                                        <td style="width: 20px">\n' +
                         '                                                            <div class="form-check">\n' +
-                        '                                                                <input class="form-check-input" data-packageid="' + obj.id + '" data-vehicletype="' + obj.type.type + ' - ' + obj.price + '" value="' + obj.id + '" type="radio" name="flexRadioDefault" id="flexRadioDefault1">\n' +
+                        '                                                                <input class="form-check-input" data-packageid="' + obj.id + '" data-vehicletype="' + obj.type.type + ' - ' + obj.price + '" value="' + obj.id + '" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="checkForm()">\n' +
                         '                                                            </div>\n' +
                         '                                                        </td>\n' +
                         '                                                        <td style="width: 80px">' + obj.type.type + '</td>\n' +
@@ -863,4 +910,8 @@
         font-size: 19px;
         font-family: sans-serif;
     }
+    .error {
+            color: red !important;
+            display: block;
+        }
 </style>
