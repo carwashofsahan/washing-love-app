@@ -97,31 +97,31 @@
                     </div>
                     <div class="modal-body">
 
-                        <form>
+                        <form id="customer_booking">
 
                             <div class="form-group">
-                                <span class="form-label">Vehicle Number</span>
+                                <span class="form-label required">Vehicle Number</span>
                                 <input class="form-control" type="text"
-                                       placeholder="Enter vehicle number" id="vehicleNumber">
+                                       placeholder="Enter vehicle number" id="vehicleNumber" name="vehicleNumber">
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <span class="form-label">Date</span>
-                                        <input class="form-control datepicker" type="" id="bookingdate" required>
+                                        <span class="form-label required">Date</span>
+                                        <input class="form-control datepicker" type="" id="bookingdateID" name="bookingdate" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <span class="form-label">Time</span>
-                                        <input class="form-control" type="time" id="bookingtime" required>
+                                        <span class="form-label required">Time</span>
+                                        <input class="form-control" type="time" id="bookingtime" name="bookingtime" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <span class="form-label">Select Package </span>
+                                            <span class="form-label required">Select Package </span>
                                             <div id="selectpackages"></div>
                                             <%--                                            <div id="myDIV">--%>
                                             <%--                                                <table>--%>
@@ -355,6 +355,53 @@
     var packageid;
 
     var selectedpackage;
+
+    // validations for wash center add form
+    $('#customer_booking').validate({
+            rules: {
+                vehicleNumber: {
+                    minlength: 7,
+                    maxlength: 10,
+                    required: true,
+                },
+                bookingdate: {
+                    required: true,
+                },
+                bookingtime: {
+                    required: true
+                },
+                flexRadioDefault: {
+                    required: true
+                },
+            },
+            messages: {
+                vehicleNumber: {
+                    required: "Please provide the vehicle Number",
+                    minlength: "Vehicle number should be at least 7 characters long",
+                    maxlength: "Vehicle number maximum should be 10 characters",
+                },
+                bookingdate: {
+                    required: "Please provide the booking date",
+                },
+                bookingtime: {
+                    required: "Please provide the booking time"
+                },
+                flexRadioDefault: {
+                    required: "Please select a package"
+                }
+
+            },
+            submitHandler: function (form, event) {
+                console.log('submit');
+            }
+        });
+    // disable book button based on valid state of the form
+    $('#customer_booking input, #customer_booking select,#customer_booking radio, #customer_booking textarea').on('change', checkForm);
+
+    function checkForm() {
+        console.log('valid: ', $('#customer_booking').valid());
+        $('#bookModelBtn').prop('disabled', !$('#customer_booking').valid());
+    }
 
     $(function () {
 
@@ -714,7 +761,7 @@
                         '                                                    <tr>\n' +
                         '                                                        <td style="width: 20px">\n' +
                         '                                                            <div class="form-check">\n' +
-                        '                                                                <input class="form-check-input" data-packageid="' + obj.id + '" data-vehicletype="' + obj.type.type + ' - ' + obj.price + '" value="' + obj.id + '" type="radio" name="flexRadioDefault" id="flexRadioDefault1">\n' +
+                        '                                                                <input class="form-check-input" data-packageid="' + obj.id + '" data-vehicletype="' + obj.type.type + ' - ' + obj.price + '" value="' + obj.id + '" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="checkForm()">\n' +
                         '                                                            </div>\n' +
                         '                                                        </td>\n' +
                         '                                                        <td style="width: 80px">' + obj.type.type + '</td>\n' +
@@ -934,5 +981,13 @@
     font-weight: bolder;
     font-size: 19px;
     font-family: sans-serif;
+    }
+    .error {
+            color: red !important;
+            display: block;
+        }
+    .required:after {
+        content:" *";
+        color: red;
     }
 </style>
