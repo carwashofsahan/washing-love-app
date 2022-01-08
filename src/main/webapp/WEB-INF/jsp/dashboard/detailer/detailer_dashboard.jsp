@@ -298,6 +298,62 @@
     var notificationCount = 0;
     var centerPackages;
 
+    $('#form').validate({
+            rules: {
+                mycentername: {
+                    required: true,
+                    minlength: 4,
+                },
+                mycentercity: {
+                    required: true,
+                    minlength: 4,
+                },
+                mycentercontact: {
+                    required: true,
+                    minlength: 10,
+                },
+                totalslot: {
+                    required: true,
+                    min: 1
+                },
+                package: {
+                    required: true
+                },
+            },
+            messages: {
+                mycentername: {
+                    required: "Please provide a name",
+                    minlength: "Name should be at least 4 characters long",
+                },
+                mycentercity: {
+                    required: "Please provide the city",
+                    minlength: "City name should be at least 4 characters long",
+                },
+                mycentercontact: {
+                    required: "Please provide the contact number",
+                    minlength: "Contact number should be at least 10 characters long",
+                },
+                totalslot: {
+                    required: "Please enter the number of slots",
+                    min: "Total slots can not be empty or a negative"
+                },
+                package: {
+                    required: "Please select a package"
+                }
+            },
+            submitHandler: function (form, event) {
+                console.log('submit');
+            }
+        });
+
+    // disable book button based on valid state of the form
+    $('#form input, #form select,#form radio, #form textarea').on('change', checkForm);
+
+    function checkForm() {
+        console.log('valid: ', $('#form').valid());
+        $('#submitBtn').prop('disabled', !$('#form').valid());
+    }
+
     $(function () {
         $('.detailer-washcenter').addClass("active");
 
@@ -582,7 +638,7 @@
                     $("#loadAllPackages").append('<tr>\n' +
                         '                                                                        <td>\n' +
                         '                                                                            <div>\n' +
-                        '                                                                                <input type="checkbox"\n' +
+                        '                                                                                <input type="checkbox"  onclick="checkForm()"\n' +
                         '                                                                                       class="custom"\n' +
                         '                                                                                        name="package" value=' + obj.id + ' >\n' +
                         '                                                                                <label \n' +
@@ -1304,3 +1360,14 @@
     }
 
 </script>
+
+<style type="text/css">
+    .error {
+            color: red !important;
+            display: block;
+        }
+    .required:after {
+        content:" *";
+        color: red;
+    }
+</style>
