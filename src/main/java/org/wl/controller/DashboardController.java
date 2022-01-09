@@ -143,6 +143,10 @@ public class DashboardController {
             modelAndView.addObject("user", userParam);
             modelAndView.addObject("userType", userTypeParam);
             System.out.println("user: " + userParam + ", token: " + tokenParam+ ", userType: " + userTypeParam);
+            // update http session
+            if(token == null) httpSession.setAttribute("token", tokenParam);
+            if(user == null) httpSession.setAttribute("user", userParam);
+            if(userType == null) httpSession.setAttribute("userType", userTypeParam);
         } else if(token != null && user != null ) {
             // set values using attributes in Httpsession
             modelAndView.addObject("token",token);
@@ -150,7 +154,7 @@ public class DashboardController {
             modelAndView.addObject("userType",userType);
             System.out.println("from httpsession, user: " + user + ", token: " + token+ ", userType: " + userType + " redirectPath: " + redirectPath);
         } else {
-            System.out.println("Logout, user: " + user + ", token: " + token+ ", userType: " + userType +" redirectPath: " + redirectPath);
+            System.out.println("Logout, user: " + user + "userParam: " + userParam + ", token: " + token+ ", userType: " + userType +" redirectPath: " + redirectPath);
             return new ModelAndView("auth/login");
         }
         return modelAndView;

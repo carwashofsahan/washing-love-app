@@ -227,9 +227,11 @@ public class UserController {
             Role roledto = roleService.searchRoleById(userDto.getRole().getId());
             if (userDto.getState() == UserState.ACCEPTED) {
                 CommonUtil.isLoggedIn = true;
+                // store data in the view
+                modelAndView.addObject("token", jwt);
+                modelAndView.addObject("user", userDto.getId());
+                modelAndView.addObject("userType", userDto.getRole().getName());
                 if (roledto.getName().equalsIgnoreCase("CUSTOMER")) {
-
-
                     modelAndView.setViewName("redirect:/dashboards/customer");
                     session.setAttribute("token", jwt);
                     session.setAttribute("user", userDto.getId());
