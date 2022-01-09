@@ -69,14 +69,14 @@
                     <div class="modal-body">
                         <form id="form">
                             <div class="form-group">
-                                <span class="form-label">Name</span>
+                                <span class="form-label required">Name</span>
                                 <input class="form-control" type="text"
                                        placeholder="Full Name Here" id="mycentername" name="mycentername">
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <span class="form-label">City</span>
+                                        <span class="form-label required">City</span>
                                         <input class="form-control" type="text"
                                                placeholder="Enter City" id="mycentercity" name="mycentercity">
 
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <span class="form-label">Contact Number</span>
+                                        <span class="form-label required">Contact Number</span>
                                         <input class="form-control" type="text"
                                                placeholder="Enter Contact Number" id="mycentercontact"
                                                name="mycentercontact">
@@ -94,7 +94,7 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <span class="form-label">Total Slots</span>
+                                        <span class="form-label required">Total Slots</span>
                                         <input class="form-control" type="number" min="1"
                                                placeholder="Enter Total Slots" id="totalslot" name="totalslot">
                                     </div>
@@ -103,6 +103,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12">
+                                             <span class="form-label required">Select Package</span>
                                             <table class="table table-bordered">
                                                 <tbody id="loadAllPackages">
 
