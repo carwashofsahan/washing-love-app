@@ -752,7 +752,7 @@
             },
             error: function (err) {
                 alert("error occured while deleting")
-                location.reload();
+                location.assign("/dashboards/detailer?user=${user}&token=${token}&userType=${userType}");
             }
         });
     }
