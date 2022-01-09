@@ -33,6 +33,7 @@ import org.springframework.stereotype.Service;
 import org.wl.util.CommonUtil;
 import org.wl.entity.Booking;
 
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 import java.sql.Time;
@@ -421,6 +422,7 @@ public class WashCenterServiceImpl implements WashCenterService {
 
         Resource resource = resourceLoader.getResource("file:src/main/resources/static/dist/img/wllogo.png");
         MimeMessage message = emailSender.createMimeMessage();
+        message.setFrom(new InternetAddress(senderEmail, "Washing Love"));
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo(to);
