@@ -35,7 +35,7 @@
                     <div class="modal-body">
                         <form id="form">
                             <div class="form-group">
-                                <span class="form-label">Vehicle Type</span>
+                                <span class="form-label required">Vehicle Type</span>
                                 <select class="form-control" id="vehicleOptions" name="vehicleOptions">
 
                                 </select>
@@ -43,12 +43,12 @@
                             </div>
 
                             <div class="form-group">
-                                <span class="form-label">Price</span>
-                                <input class="form-control" type="text"
+                                <span class="form-label required">Price</span>
+                                <input class="form-control" type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
                                        placeholder="Price" id="packagePrice" name="packagePrice">
                             </div>
                             <div class="form-group">
-                                <span class="form-label">Description</span>
+                                <span class="form-label required">Description</span>
                                 <textarea class="form-control" rows="3" id="description" name="description"></textarea>
                             </div>
 
@@ -341,3 +341,13 @@
 
 
 </script>
+<style type="text/css">
+    .error {
+            color: red !important;
+            display: block;
+        }
+    .required:after {
+        content:" *";
+        color: red;
+    }
+</style>
