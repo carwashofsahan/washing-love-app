@@ -109,7 +109,7 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" style="padding-top: 90px; padding-bottom: 80px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
