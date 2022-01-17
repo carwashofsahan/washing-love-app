@@ -299,54 +299,6 @@
     var notificationCount = 0;
     var centerPackages;
 
-    $('#form').validate({
-            rules: {
-                mycentername: {
-                    required: true,
-                    minlength: 4,
-                },
-                mycentercity: {
-                    required: true,
-                    minlength: 4,
-                },
-                mycentercontact: {
-                    required: true,
-                    minlength: 10,
-                },
-                totalslot: {
-                    required: true,
-                    min: 1
-                },
-                package: {
-                    required: true
-                },
-            },
-            messages: {
-                mycentername: {
-                    required: "Please provide a name",
-                    minlength: "Name should be at least 4 characters long",
-                },
-                mycentercity: {
-                    required: "Please provide the city",
-                    minlength: "City name should be at least 4 characters long",
-                },
-                mycentercontact: {
-                    required: "Please provide the contact number",
-                    minlength: "Contact number should be at least 10 characters long",
-                },
-                totalslot: {
-                    required: "Please enter the number of slots",
-                    min: "Total slots can not be empty or a negative"
-                },
-                package: {
-                    required: "Please select a package"
-                }
-            },
-            submitHandler: function (form, event) {
-                console.log('submit');
-            }
-        });
-
     // disable book button based on valid state of the form
     $('#form input, #form select,#form radio, #form textarea').on('change', checkForm);
 
@@ -662,16 +614,44 @@
         $('#form').validate({
             rules: {
                 mycentername: {
-                    required: true
+                    required: true,
+                    minlength: 4,
                 },
                 mycentercity: {
-                    required: true
+                    required: true,
+                    minlength: 4,
                 },
                 mycentercontact: {
-                    required: true
+                    required: true,
+                    minlength: 10,
                 },
                 totalslot: {
+                    required: true,
+                    min: 1
+                },
+                package: {
                     required: true
+                },
+            },
+            messages: {
+                mycentername: {
+                    required: "Please provide a name",
+                    minlength: "Name should be at least 4 characters long",
+                },
+                mycentercity: {
+                    required: "Please provide the city",
+                    minlength: "City name should be at least 4 characters long",
+                },
+                mycentercontact: {
+                    required: "Please provide the contact number",
+                    minlength: "Contact number should be at least 10 characters long",
+                },
+                totalslot: {
+                    required: "Please enter the number of slots",
+                    min: "Total slots can not be empty or a negative"
+                },
+                package: {
+                    required: "Please select a package"
                 }
             },
 
